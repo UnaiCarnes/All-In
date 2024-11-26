@@ -8,9 +8,9 @@ const Home = () => {
   });
 
   const renderGameSection = (title, games) => (
-    <section className="mb-8 last:mb-0 bg-gray-800 bg-opacity-50 p-6 rounded-lg">
-      <h2 className="text-xl font-semibold text-white mb-6">{title}</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    <section className="mb-12 last:mb-0">
+      <h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">{title}</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
         {games.map((game, index) => (
           <GameCard 
             key={index}
@@ -23,7 +23,7 @@ const Home = () => {
   );
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 px-12 py-8 max-w-[1920px] mx-auto">
       {renderGameSection('Your Favorite Games', games)}
       {renderGameSection('Most Played', games)}
       {renderGameSection('Highest Reward', games)}
