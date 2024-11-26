@@ -1,29 +1,29 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainContent from './components/MainContent';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import Login from './pages/Login';
+import Layout from './components/layout/Layout';
+import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Balance from './pages/Balance';
 import Games from './pages/Games';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
-const App = () => (
-  <Router>
-    <div className="min-h-screen bg-gray-900">
-      <Header />
-      <div className="flex">
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<MainContent />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/balance" element={<Balance />} />
-          <Route path="/games" element={<Games />} />
-        </Routes>
-      </div>
-    </div>
-  </Router>
-);
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        {/* Rutas públicas */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        
+        {/* Rutas con Layout */}
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/profile" element={<Layout><Profile /></Layout>} />
+        <Route path="/balance" element={<Layout><Balance /></Layout>} />
+        <Route path="/games" element={<Layout><Games /></Layout>} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
