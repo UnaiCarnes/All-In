@@ -14,69 +14,72 @@ const Header = () => {
 
   return (
     <>
-      <header 
-        className="fixed top-0 left-0 w-full h-28 z-50 flex justify-between items-center px-6 md:px-24 overflow-hidden"
+      <header
+        className="fixed top-0 left-0 w-full h-28 z-50 flex"
         style={{
           backgroundImage: "url('/img/header1.2.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          transform: 'translateZ(0)',
-          willChange: 'transform'
         }}
       >
-        {/* Overlay oscuro */}
-        <div 
-          className="absolute inset-0 bg-black opacity-30"
-          style={{ pointerEvents: 'none' }}
-        />
-
-        {/* Hamburger Menu - Solo visible en móvil */}
-        <button 
-          className="md:hidden z-50 text-yellow-400"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-
-        {/* Profile Box - Oculto en móvil */}
-        <div className="hidden md:block rounded-lg transition-colors z-10 pl-4">
-          <Link to="/profile" className="flex items-center space-x-4 text-yellow-400 hover:text-yellow-300 transform transition-all duration-300 hover:scale-110">
-            <span className="text-2xl font-bold">Profile</span>
-          </Link>
-        </div>
-        
-        {/* Logo */}
-        <div className="flex items-center justify-center z-10 mx-auto md:mx-0 md:ml-14rem">
-          <Link to="/" className="transform transition-transform">
-            <img 
-              ref={logoRef}
-              src="/img/logo.png" 
-              alt="Casino Logo" 
-              className="w-[5.5rem] h-[5.5rem] logo-spin"
-              onMouseEnter={handleLogoHover}
-            />
-          </Link>
+        {/* Bloque Sidebar */}
+        <div className="h-full w-52 flex items-center justify-center">
+          {/* Profile */}
+          <div className="hidden md:block z-10">
+            <Link
+              to="/profile"
+              className="flex items-center space-x-4 text-yellow-400 hover:text-yellow-300 transform transition-all duration-300 hover:scale-110"
+            >
+              <span className="text-2xl font-bold">Profile</span>
+            </Link>
+          </div>
         </div>
 
-        {/* Balance Box - Oculto en móvil */}
-        <div className="hidden md:block rounded-lg transition-colors z-10 pr-4">
-          <Link to="/balance" className="flex items-center space-x-4 text-yellow-400 hover:text-yellow-300 transform transition-all duration-300 hover:scale-110">
-            <span className="text-2xl font-bold">Balance</span>
-            <img src="/img/moneda.png" alt="Coin" className="w-8 h-8" />
-            <span className="text-yellow-400 text-2xl font-bold">1000</span>
-          </Link>
+        {/* Bloque Main */}
+        <div className="flex-1 h-full flex items-center justify-center relative">
+          {/* Hamburger Menu - Mobile */}
+          <button
+            className="md:hidden z-50 text-yellow-400 absolute left-6"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          {/* Logo - Centrado */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+            <Link to="/" className="transform transition-transform">
+              <img
+                ref={logoRef}
+                src="/img/logo.png"
+                alt="Casino Logo"
+                className="w-[5.5rem] h-[5.5rem] logo-spin"
+                onMouseEnter={handleLogoHover}
+              />
+            </Link>
+          </div>
+
+          {/* Balance - Mover al extremo derecho */}
+          <div className="absolute right-12 hidden md:block z-10"> {/* Ajuste de espaciado */}
+            <Link
+              to="/balance"
+              className="flex items-center space-x-4 text-yellow-400 hover:text-yellow-300 transform transition-all duration-300 hover:scale-110"
+            >
+              <span className="text-2xl font-bold">Balance</span>
+              <img src="/img/moneda.png" alt="Coin" className="w-8 h-8" />
+              <span className="text-yellow-400 text-2xl font-bold">1000</span>
+            </Link>
+          </div>
         </div>
       </header>
 
-      {/* Menú móvil - Fuera del header */}
+      {/* Menú móvil */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 bg-gray-800 z-40 md:hidden">
           <div className="pt-28 px-6 pb-8">
-            {/* Botón cerrar */}
-            <button 
+            <button
               className="absolute top-8 right-6 text-yellow-400 z-50"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -86,15 +89,15 @@ const Header = () => {
             </button>
 
             <div className="space-y-6">
-              <Link 
-                to="/profile" 
+              <Link
+                to="/profile"
                 className="block text-xl text-yellow-400 mb-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Profile
               </Link>
-              <Link 
-                to="/balance" 
+              <Link
+                to="/balance"
                 className="block text-xl text-yellow-400 mb-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
