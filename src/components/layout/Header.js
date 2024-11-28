@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+  const logoRef = useRef(null);
+
+  const handleLogoHover = () => {
+    const logo = logoRef.current;
+    logo.classList.remove('logo-spinning');
+    void logo.offsetWidth;
+    logo.classList.add('logo-spinning');
+  };
+
   return (
     <header 
       className="fixed top-0 left-0 w-full h-28 z-50 flex justify-between items-center px-24 overflow-hidden"
@@ -10,8 +19,8 @@ const Header = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        transform: 'translateZ(0)', // Fuerza el hardware acceleration
-        willChange: 'transform' // Optimiza las transformaciones
+        transform: 'translateZ(0)',
+        willChange: 'transform'
       }}
     >
       {/* Overlay oscuro */}
@@ -26,11 +35,17 @@ const Header = () => {
           <span className="text-2xl font-bold">Profile</span>
         </Link>
       </div>
-
+      
       {/* Logo */}
       <div className="flex items-center justify-center z-10" style={{ marginLeft: '14rem' }}>
-        <Link to="/" className="transform hover:scale-105 transition-transform">
-          <img src="/img/logo.png" alt="Casino Logo" className="w-[5.5rem] h-[5.5rem]" />
+        <Link to="/" className="transform transition-transform">
+          <img 
+            ref={logoRef}
+            src="/img/logo.png" 
+            alt="Casino Logo" 
+            className="w-[5.5rem] h-[5.5rem] logo-spin"
+            onMouseEnter={handleLogoHover}
+          />
         </Link>
       </div>
 

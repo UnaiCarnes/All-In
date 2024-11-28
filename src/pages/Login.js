@@ -10,7 +10,12 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
+
+    <div className="min-h-screen flex items-center justify-center bg-gray-900" style={{
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}> 
       <Card className="max-w-md w-full">
         <h2 className="text-2xl font-bold text-yellow-500 text-center mb-6">
           Log In
@@ -23,7 +28,7 @@ const Login = () => {
             </label>
             <input
               type="text"
-              className="form-input"
+              className="form-input w-full text-black"
               placeholder="Enter your username"
               required
             />
@@ -35,12 +40,12 @@ const Login = () => {
             </label>
             <input
               type="password"
-              className="form-input"
+              className="form-input w-full text-black"
               placeholder="Enter your password"
               required
             />
           </div>
-
+          
           <Button type="submit">
             Enter
           </Button>
@@ -49,6 +54,11 @@ const Login = () => {
             Don't have an account?{' '}
             <Link to="/register" className="text-yellow-500 hover:underline">
               Sign Up
+            </Link>
+          </p>
+          <p className="text-center text-sm text-gray-400 mt-4">
+            <Link to="/" className="text-yellow-500 hover:underline">
+              Enter as a guest
             </Link>
           </p>
         </form>
