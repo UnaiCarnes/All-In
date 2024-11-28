@@ -23,7 +23,7 @@ const Register = () => {
             </label>
             <input
               type="text"
-              className="form-input"
+              className="form-input w-full text-black"
               placeholder="Choose a username"
               required
             />
@@ -35,7 +35,7 @@ const Register = () => {
             </label>
             <input
               type="email"
-              className="form-input"
+              className="form-input w-full text-black"
               placeholder="Enter your email"
               required
             />
@@ -47,8 +47,21 @@ const Register = () => {
             </label>
             <input
               type="password"
-              className="form-input"
+              className="form-input w-full text-black"
               placeholder="Create a password"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-1">
+              Birth date
+            </label>
+            <input
+              type="date"
+              className="form-input w-full text-black"
+              min="1900-01-01"
+              max="2024-12-31"
               required
             />
           </div>
@@ -61,6 +74,11 @@ const Register = () => {
             Already have an account?{' '}
             <Link to="/login" className="text-yellow-500 hover:underline">
               Log In
+            </Link>
+          </p>
+          <p className="text-center text-sm text-gray-400 mt-4">
+            <Link to="/" className="text-yellow-500 hover:underline">
+              Enter as a guest
             </Link>
           </p>
         </form>

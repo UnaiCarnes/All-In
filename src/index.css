@@ -18,3 +18,43 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Aseguramos que la página balance ocupe toda la pantalla */
+/* CSS de la página Balance */
+/* Balance page (contenedor principal) */
+/* Balance page (contenedor principal) */
+.balance-page {
+  height: 89.5vh;  /* Asegura que ocupe toda la altura de la ventana */
+  display: flex;
+  flex-direction: column;  /* Organiza los elementos verticalmente */
+  align-items: center;
+  background-image: url('../public/img/fondo5.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;  /* La imagen se mantiene fija al hacer scroll */
+}
+
+/* Asegura que html y body tengan altura completa */
+.balance-page html,
+.balance-page body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ajuste del contenedor del Card (sin cambios mayores) */
+.balance-page .max-w-lg {
+  width: 100%;
+  max-width: 600px;  /* Mantiene un ancho máximo */
+  margin-top: 100px;  /* Deja espacio para el header fijo */
+  overflow-y: auto;  /* Habilita el scroll solo dentro del Card */
+  max-height: calc(100vh - 100px);  /* Limita la altura disponible para el scroll dentro del Card */
+}
+
+/* Imagen flotante en la esquina */
+.balance-page img {
+  object-fit: contain;
+  max-width: 100%;
+}
+
+
