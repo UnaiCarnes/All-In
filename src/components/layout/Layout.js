@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 
 const Layout = ({ children }) => {
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="h-screen flex flex-col overflow-hidden"> {/* Mantiene overflow-hidden */}
       <Header />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
