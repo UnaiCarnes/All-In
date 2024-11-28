@@ -4,23 +4,21 @@ import Sidebar from './Sidebar';
 
 const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="h-screen flex flex-col overflow-hidden">
       <Header />
-      <div className="flex">
+      <div className="flex flex-1">
         <Sidebar />
         <main 
+          className="flex-1 overflow-y-auto"
           style={{
             backgroundImage: "url('/img/header4.png')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundAttachment: 'fixed',
-            marginLeft: '12rem',
-            paddingTop: '6rem',
-            minHeight: 'calc(100vh - 6rem)',
-            width: 'calc(100% - 12rem)',
-            overflowY: 'auto',
-            overflowX: 'hidden'
+            marginLeft: '13rem',
+            paddingTop: '7rem', // Aumentado para dar espacio al header
+            width: 'calc(100% - 13rem)',
           }}
         >
           {children}

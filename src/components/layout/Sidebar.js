@@ -7,26 +7,29 @@ const Sidebar = () => {
     { name: 'Blackjack', path: '/games' },
     { name: 'Poker', path: '/games' },
     { name: 'Horse Racing', path: '/games' },
+    { name: 'Slots', path: '/games' },
   ];
 
   const socialLinks = [
-    { name: 'X', icon: '/img/x.png', url: 'https://twitter.com' },
-    { name: 'Instagram', icon: '/img/instagram.png', url: 'https://instagram.com' },
-    { name: 'Email', icon: '/img/email.png', url: 'mailto:contact@example.com' },
-    { name: 'TikTok', icon: '/img/tik-tok.png', url: 'https://tiktok.com' }
+    { name: 'X', icon: '/img/x.svg', url: 'https://x.com/AllIn_0fficial' },
+    { name: 'Instagram', icon: '/img/instagram.svg', url: 'https://www.instagram.com/all_in.0fficial/' },
+    { name: 'Email', icon: '/img/email.svg', url: 'mailto:casino.allin.official@gmail.com' },
+    { name: 'TikTok', icon: '/img/tik-tok.svg', url: 'https://www.tiktok.com/@all_in.official' }
   ];
 
   return (
-    <aside className="fixed left-0 top-24 w-48 h-[calc(100vh-6rem)] bg-gray-800 p-4 flex flex-col">
+    <aside className="fixed left-0 top-28 w-52 h-[calc(100vh-7rem)] bg-gray-800 p-5 flex flex-col">
       {/* Games List */}
-      <div className="mb-6">
-        <h3 className="text-xl text-yellow-400 mb-4">Games</h3>
-        <nav className="space-y-3">
+      <div className="mb-7">
+        <h3 className="text-2xl text-yellow-400 mb-5 font-extrabold tracking-wide"> 
+          Games
+        </h3>
+        <nav className="space-y-4 pl-4">
           {games.map((game, index) => (
             <Link
               key={index}
               to={game.path}
-              className="block text-gray-300 hover:text-yellow-400 transition-colors"
+              className="block text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110" // Añadida la animación
             >
               {game.name}
             </Link>
@@ -34,29 +37,26 @@ const Sidebar = () => {
         </nav>
       </div>
 
-      {/* Spacer */}
+      {/* Resto del código igual */}
       <div className="flex-1"></div>
 
-      {/* Language Selector */}
-      <div className="flex justify-center mb-4 border-t border-gray-700 pt-4">
-        <button className="text-gray-300 hover:text-yellow-400 mx-2">EN</button>
-        <span className="text-gray-300">/</span>
-        <button className="text-gray-300 hover:text-yellow-400 mx-2">ES</button>
+      <div className="flex justify-center mb-5 border-t border-gray-700 pt-5">
+        <button className="text-lg text-gray-300 hover:text-yellow-400 mx-3 transition-all duration-300 transform hover:scale-110">EN</button>
+        <span className="text-lg text-gray-300">/</span>
+        <button className="text-lg text-gray-300 hover:text-yellow-400 mx-3 transition-all duration-300 transform hover:scale-110">ES</button>
       </div>
 
-      {/* Auth Links */}
-      <div className="border-t border-gray-700 pt-4 mb-6 flex justify-between">
-        <Link to="/login" className="text-gray-300 hover:text-yellow-400">
+      <div className="border-t border-gray-700 pt-5 mb-7 flex justify-between">
+        <Link to="/login" className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110">
           Log In
         </Link>
-        <Link to="/register" className="text-gray-300 hover:text-yellow-400">
+        <Link to="/register" className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110">
           Sign Up
         </Link>
       </div>
 
-      {/* Social Media Links */}
-      <div className="border-t border-gray-700 pt-4">
-        <div className="flex justify-center space-x-4">
+      <div className="border-t border-gray-700 pt-5">
+        <div className="flex justify-center space-x-5">
           {socialLinks.map((social) => (
             <a 
               key={social.name}
@@ -68,7 +68,7 @@ const Sidebar = () => {
               <img 
                 src={social.icon} 
                 alt={social.name}
-                className="w-6 h-6"
+                className="w-8 h-8"
               />
             </a>
           ))}

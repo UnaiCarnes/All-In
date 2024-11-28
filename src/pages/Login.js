@@ -12,7 +12,6 @@ const Login = () => {
   return (
 
     <div className="min-h-screen flex items-center justify-center bg-gray-900" style={{
-        backgroundImage: "url('/img/fondo6.avif')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
