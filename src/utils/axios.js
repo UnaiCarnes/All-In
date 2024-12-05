@@ -1,16 +1,14 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8000/api', // Asegúrate de que este es el puerto correcto
-    withCredentials: true,
+    baseURL: 'http://localhost:8000/api',
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
     }
 });
 
-// Añadir interceptores para ver las peticiones
+// Interceptores para debugging
 api.interceptors.request.use(request => {
     console.log('Starting Request:', request);
     return request;
