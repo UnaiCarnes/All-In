@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8000/api',
+    baseURL: 'http://localhost:8000/api', // Asegúrate de que este es el puerto correcto
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',
@@ -10,11 +10,19 @@ const api = axios.create({
     }
 });
 
-// Interceptor para manejar errores
+// Añadir interceptores para ver las peticiones
+api.interceptors.request.use(request => {
+    console.log('Starting Request:', request);
+    return request;
+});
+
 api.interceptors.response.use(
-    response => response,
+    response => {
+        console.log('Response:', response);
+        return response;
+    },
     error => {
-        console.error('Error en la petición:', error);
+        console.log('Response Error:', error);
         return Promise.reject(error);
     }
 );
