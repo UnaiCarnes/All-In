@@ -1,25 +1,61 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
+import axios from '../utils/axios';
 
 const Login = () => {
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí iría la lógica de login
+    try {
+      const response = await axios.post('/login', formData);
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      navigate('/profile');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Invalid credentials');
+    }
   };
 
   return (
+<<<<<<< HEAD
 
     <div className="min-h-screen flex items-center justify-center bg-gray-900" style={{
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
       }}> 
+=======
+    <div className="min-h-screen flex items-center justify-center bg-gray-900" style={{
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
+    }}>
+>>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
       <Card className="max-w-md w-full">
         <h2 className="text-2xl font-bold text-yellow-500 text-center mb-6">
           Log In
         </h2>
+
+        {error && (
+          <div className="mb-4 p-3 bg-red-500 bg-opacity-20 border border-red-500 text-red-500 rounded">
+            {error}
+          </div>
+        )}
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -28,8 +64,14 @@ const Login = () => {
             </label>
             <input
               type="text"
+<<<<<<< HEAD
+=======
+              name="email"
+>>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
               className="form-input w-full text-black"
               placeholder="Enter your username"
+              value={formData.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -40,8 +82,14 @@ const Login = () => {
             </label>
             <input
               type="password"
+<<<<<<< HEAD
+=======
+              name="password"
+>>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
               className="form-input w-full text-black"
               placeholder="Enter your password"
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>

@@ -7,10 +7,12 @@ import Balance from './pages/Balance';
 import Games from './pages/Games';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ConnectionTest from './components/test/ConnectionTest'; // Actualiza la ruta de importación
 
 const App = () => {
   return (
     <Router>
+      <ConnectionTest />
       <Routes>
         {/* Rutas públicas */}
         <Route path="/login" element={<Login />} />
