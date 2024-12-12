@@ -24,6 +24,7 @@ const App = () => {
         <Route path="/balance" element={<PrivateRoute><Layout><Balance /></Layout></PrivateRoute>} />
         
         {/* Rutas con Layout */}
+        <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/games" element={<Layout><Games /></Layout>} />
       </Routes>
     </Router>
