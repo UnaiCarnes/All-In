@@ -1,16 +1,22 @@
 import axios from 'axios';
 
+// Obtener el token CSRF
+const getCsrfToken = async () => {
+    await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie', { withCredentials: true });
+};
+
 const api = axios.create({
-    baseURL: 'http://localhost:8000/api',
+    baseURL: 'http://127.0.0.1:8000/api',
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-    }
+    },
+    withCredentials: true, // Asegúrate de que esto esté habilitado
 });
 
-// Interceptores para debugging
-api.interceptors.request.use(request => {
-    console.log('Starting Request:', request);
+// Interceptores para agregar el token CSRF
+api.interceptors.request.use(async (request) => {
+    await getCsrfToken(); // Asegúrate de obtener el token CSRF antes de cada solicitud
     return request;
 });
 

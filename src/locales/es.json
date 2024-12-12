@@ -1,0 +1,76 @@
+{
+    "HEADER": {
+      "Perfil": "Perfil",
+      "Balance": "Balance"
+    },
+    "ASIDE": {
+      "Juegos": "Juegos",
+      "Ruleta": "Ruleta",
+      "Blackjack": "Blackjack",
+      "Poker": "Poker",
+      "Carrera de caballos": "Carrera de caballos",
+      "Tragaperras": "Tragaperras",
+      "EN/ES": "EN/ES",
+      "Iniciar sesion": "Iniciar sesión",
+      "Registrarse": "Registrarse"
+    },
+    "MAIN": {
+      "Tus juegos favoritos": "Tus juegos favoritos",
+      "Mas jugados": "Más jugados",
+      "Mayores recompensas": "Mayores recompensas"
+    },
+    "PROFILE": {
+      "Información del usuario": "Información del usuario",
+      "Nombre": "Nombre",
+      "ID del jugador": "ID del jugador",
+      "Balance disponible": "Balance disponible",
+      "Email": "Email",
+      "Estadísticas de juego": "Estadísticas de juego",
+      "Juegos jugados": "Juegos jugados",
+      "Juego mas jugado": "Juego más jugado",
+      "Juegos ganados": "Juegos ganados",
+      "Juegos perdidos": "Juegos perdidos",
+      "Media de juegos ganados": "Media de juegos ganados",
+      "Media de cantidad apostada": "Media de cantidad apostada",
+      "Total ganado": "Total ganado",
+      "Total perdido": "Total perdido",
+      "Total g/p": "Total g/p"
+    },
+    "LOGIN": {
+      "Iniciar sesion": "Iniciar sesión",
+      "Nombre de usuario": "Nombre de usuario",
+      "Introduzca su usuario": "Introduzca su usuario",
+      "Contraseña": "Contraseña",
+      "Introduzca su contraseña": "Introduzca su contraseña",
+      "Continuar": "Continuar",
+      "¿No tiene una cuenta? Regístrese": "¿No tiene una cuenta? Regístrese",
+      "Entrar como invitado": "Entrar como invitado"
+    },
+    "REGISTER": {
+      "Registrarse": "Registrarse",
+      "Nombre de usuario": "Nombre de usuario",
+      "Elija su usuario": "Elija su usuario",
+      "Email": "Email",
+      "Introduzca su email": "Introduzca su email",
+      "Contraseña": "Contraseña",
+      "Crear contraseña": "Crear contraseña",
+      "Fecha de nacimiento": "Fecha de nacimiento",
+      "Crear cuenta": "Crear cuenta",
+      "¿Ya tiene una cuenta? Inicie sesión": "¿Ya tiene una cuenta? Inicie sesión",
+      "Entrar como invitado": "Entrar como invitado"
+    },
+    "BALANCE": {
+      "Opciones para Agregar Saldo": "Opciones para Agregar Saldo",
+      "Selecciona una opción de préstamo bancario para agregar saldo a tu cuenta": "Selecciona una opción de préstamo bancario para agregar saldo a tu cuenta",
+      "Cucha": "Cucha",
+      "Préstamo de": "Préstamo de",
+      "Mas información": "Más información",
+      "Ocultar": "Ocultar",
+      "A devolución del": "A devolución del",
+      "Tiradas": "Tiradas",
+      "Total a devolver": "Total a devolver",
+      "Costo por tirada(Acumulable)": "Costo por tirada (Acumulable)",
+      "Seleccionar Préstamo": "Seleccionar Préstamo"
+    }
+  }
+  

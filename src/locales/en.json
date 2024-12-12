@@ -1,0 +1,76 @@
+{
+    "HEADER": {
+      "Perfil": "Profile",
+      "Balance": "Balance"
+    },
+    "ASIDE": {
+      "Juegos": "Games",
+      "Ruleta": "Roulette",
+      "Blackjack": "Blackjack",
+      "Poker": "Poker",
+      "Carrera de caballos": "Horse Racing",
+      "Tragaperras": "Slots",
+      "EN/ES": "EN/ES",
+      "Iniciar sesion": "Log In",
+      "Registrarse": "Sign Up"
+    },
+    "MAIN": {
+      "Tus juegos favoritos": "Your Favorite Games",
+      "Mas jugados": "Most Played",
+      "Mayores recompensas": "Highest Reward"
+    },
+    "PROFILE": {
+      "Información del usuario": "User Information",
+      "Nombre": "Name",
+      "ID del jugador": "Player ID",
+      "Balance disponible": "Available Balance",
+      "Email": "Email",
+      "Estadísticas de juego": "Game Statistics",
+      "Juegos jugados": "Games Played",
+      "Juego mas jugado": "Most Played Game",
+      "Juegos ganados": "Games Won",
+      "Juegos perdidos": "Games Lost",
+      "Media de juegos ganados": "Win Rate",
+      "Media de cantidad apostada": "Average Bet",
+      "Total ganado": "Total Winnings",
+      "Total perdido": "Total Losses",
+      "Total g/p": "Total w/l"
+    },
+    "LOGIN": {
+      "Iniciar sesion": "Log In",
+      "Nombre de usuario": "Username",
+      "Introduzca su usuario": "Enter your username",
+      "Contraseña": "Password",
+      "Introduzca su contraseña": "Enter your password",
+      "Continuar": "Enter",
+      "¿No tiene una cuenta? Regístrese": "Don't have an account? Sign Up",
+      "Entrar como invitado": "Enter as a guest"
+    },
+    "REGISTER": {
+      "Registrarse": "Sign Up",
+      "Nombre de usuario": "Username",
+      "Elija su usuario": "Choose a username",
+      "Email": "Email",
+      "Introduzca su email": "Enter your email",
+      "Contraseña": "Password",
+      "Crear contraseña": "Create a password",
+      "Fecha de nacimiento": "Birth date",
+      "Crear cuenta": "Create Account",
+      "¿Ya tiene una cuenta? Inicie sesión": "Already have an account? Log In",
+      "Entrar como invitado": "Enter as a guest"
+    },
+    "BALANCE": {
+      "Opciones para Agregar Saldo": "Options for adding balance",
+      "Selecciona una opción de préstamo bancario para agregar saldo a tu cuenta": "Select a loan option for adding balance to your account",
+      "Cucha": "Cucha",
+      "Préstamo de": "Loan of",
+      "Mas información": "More information",
+      "Ocultar": "Hide",
+      "A devolución del": "Upon return of",
+      "Tiradas": "Bets",
+      "Total a devolver": "Total to be returned",
+      "Costo por tirada(Acumulable)": "Cost per bet (cumulative)",
+      "Seleccionar Préstamo": "Select loan"
+    }
+  }
+  

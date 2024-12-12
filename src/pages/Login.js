@@ -1,3 +1,4 @@
+// src/pages/Login.js
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Card from '../components/ui/Card';
@@ -22,21 +23,17 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/login', formData);
+      const response = await axios.post('/login', formData); // Asegúrate de que la ruta sea correcta
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      navigate('/profile');
+      navigate('/profile'); // Redirige al perfil después de iniciar sesión
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid credentials');
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900" style={{
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed',
-    }}>
+    <div className="min-h-screen flex items-center justify-center bg-gray-900">
       <Card className="max-w-md w-full">
         <h2 className="text-2xl font-bold text-yellow-500 text-center mb-6">
           Log In
@@ -51,13 +48,13 @@ const Login = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-              Username
+              Email
             </label>
             <input
-              type="text"
+              type="email"
               name="email"
               className="form-input w-full text-black"
-              placeholder="Enter your username"
+              placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
               required

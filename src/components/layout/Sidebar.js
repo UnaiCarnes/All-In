@@ -1,7 +1,17 @@
+// src/components/layout/Sidebar.js
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user')); // Obtener el usuario del localStorage
+
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Eliminar el token
+    localStorage.removeItem('user'); // Eliminar la información del usuario
+    navigate('/login'); // Redirigir a la página de inicio de sesión
+  };
+
   const games = [
     { name: 'Roulette', path: '/games' },
     { name: 'Blackjack', path: '/games' },
@@ -29,7 +39,7 @@ const Sidebar = () => {
             <Link
               key={index}
               to={game.path}
-              className="block text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110" // Añadida la animación
+              className="block text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110"
             >
               {game.name}
             </Link>
@@ -37,7 +47,6 @@ const Sidebar = () => {
         </nav>
       </div>
 
-      {/* Resto del código igual */}
       <div className="flex-1"></div>
 
       <div className="flex justify-center mb-5 border-t border-gray-700 pt-5">
@@ -46,13 +55,25 @@ const Sidebar = () => {
         <button className="text-lg text-gray-300 hover:text-yellow-400 mx-3 transition-all duration-300 transform hover:scale-110">ES</button>
       </div>
 
-      <div className="border-t border-gray-700 pt-5 mb-7 flex justify-between">
-        <Link to="/login" className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110">
-          Log In
-        </Link>
-        <Link to="/register" className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110">
-          Sign Up
-        </Link>
+      {/* Botones de Login/Logout */}
+      <div className="border-t border-gray-700 pt-5 flex justify-center">
+        {user ? (
+          <button 
+            onClick={handleLogout} 
+            className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110"
+          >
+            Log Out
+          </button>
+        ) : (
+          <>
+            <Link to="/login" className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 mr-4"> {/* Añadido margen derecho */}
+              Log In
+            </Link>
+            <Link to="/register" className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110">
+              Sign Up
+            </Link>
+          </>
+        )}
       </div>
 
       <div className="border-t border-gray-700 pt-5">

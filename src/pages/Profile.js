@@ -1,3 +1,4 @@
+// src/pages/Profile.js
 import React, { useState, useEffect } from 'react';
 import axios from '../utils/axios';
 
@@ -27,9 +28,12 @@ const Profile = () => {
     useEffect(() => {
         const fetchProfileData = async () => {
             try {
-                console.log('Fetching profile data...');
-                const response = await axios.get('/profile');
-                console.log('Profile data received:', response.data);
+                const token = localStorage.getItem('token'); // Obtener el token del localStorage
+                const response = await axios.get('http://127.0.0.1:8000/api/profile', {
+                    headers: {
+                        Authorization: `Bearer ${token}` // Incluir el token en la cabecera
+                    }
+                });
                 setProfileData(response.data);
                 setLoading(false);
             } catch (err) {
