@@ -3,8 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import axios from '../utils/axios';
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
+  const {t}=useTranslation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
@@ -38,7 +40,7 @@ const Register = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
       <Card className="max-w-md w-full">
         <h2 className="text-2xl font-bold text-yellow-500 text-center mb-6">
-          Sign Up
+        {t("REGISTER.Registrarse")}
         </h2>
         
         {error && (
@@ -50,13 +52,13 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-              Username
+            {t("REGISTER.Nombre de usuario")}
             </label>
             <input
               type="text"
               name="name"
               className="form-input w-full text-black"
-              placeholder="Choose a username"
+              placeholder={t("REGISTER.Elija su usuario")}
               value={formData.name}
               onChange={handleChange}
               required
@@ -71,7 +73,7 @@ const Register = () => {
               type="email"
               name="email"
               className="form-input w-full text-black"
-              placeholder="Enter your email"
+              placeholder={t("REGISTER.Introduzca su email")}
               value={formData.email}
               onChange={handleChange}
               required
@@ -80,13 +82,13 @@ const Register = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-              Password
+            {t("REGISTER.Contraseña")}
             </label>
             <input
               type="password"
               name="password"
               className="form-input w-full text-black"
-              placeholder="Create a password"
+              placeholder={t("REGISTER.Crear contraseña")}
               value={formData.password}
               onChange={handleChange}
               required
@@ -95,13 +97,13 @@ const Register = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-              Confirm Password
+            {t("REGISTER.Confirmar contraseña")}
             </label>
             <input
               type="password"
               name="password_confirmation"
               className="form-input w-full text-black"
-              placeholder="Confirm your password"
+              placeholder={t("REGISTER.Confirmar contraseña")}
               value={formData.password_confirmation}
               onChange={handleChange}
               required
@@ -110,7 +112,7 @@ const Register = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-              Birth date
+            {t("REGISTER.Fecha de nacimiento")}
             </label>
             <input
               type="date"
@@ -125,18 +127,18 @@ const Register = () => {
           </div>
 
           <Button type="submit">
-            Create Account
+          {t("REGISTER.Crear cuenta")}
           </Button>
 
           <p className="text-center text-sm text-gray-400 mt-4">
-            Already have an account?{' '}
+            {t("REGISTER.¿Ya tiene una cuenta?")}{' '}
             <Link to="/login" className="text-yellow-500 hover:underline">
-              Log In
+            {t("REGISTER.Inicie sesion")}
             </Link>
           </p>
           <p className="text-center text-sm text-gray-400 mt-4">
             <Link to="/" className="text-yellow-500 hover:underline">
-              Enter as a guest
+            {t("REGISTER.Entrar como invitado")}
             </Link>
           </p>
         </form>

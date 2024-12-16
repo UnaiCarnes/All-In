@@ -2,11 +2,11 @@ import axios from 'axios';
 
 // Obtener el token CSRF
 const getCsrfToken = async () => {
-    await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie', { withCredentials: true });
+    await axios.get('http://10.14.4.170:8000/sanctum/csrf-cookie', { withCredentials: true });
 };
 
 const api = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api',
+    baseURL: 'http://10.14.4.170:8000/api',
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

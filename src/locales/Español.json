@@ -12,14 +12,23 @@
       "Tragaperras": "Tragaperras",
       "EN/ES": "EN/ES",
       "Iniciar sesion": "Iniciar sesión",
-      "Registrarse": "Registrarse"
+      "Registrarse": "Registrarse",
+      "Cerrar sesion": "Cerrar sesion"
     },
     "MAIN": {
       "Tus juegos favoritos": "Tus juegos favoritos",
       "Mas jugados": "Más jugados",
-      "Mayores recompensas": "Mayores recompensas"
+      "Mayores recompensas": "Mayores recompensas",
+      "Ruleta": "Ruleta",
+      "Blackjack": "Blackjack",
+      "Poker": "Poker",
+      "Carrera de caballos": "Carrera de caballos",
+      "Tragaperras": "Tragaperras"
     },
     "PROFILE": {
+      "Cargando datos del perfil...":"Cargando datos del perfil...",
+      "Error:":"Error:",
+      "No se encontraron datos del perfil":"No se encontraron datos del perfil",
       "Información del usuario": "Información del usuario",
       "Nombre": "Nombre",
       "ID del jugador": "ID del jugador",
@@ -34,16 +43,26 @@
       "Media de cantidad apostada": "Media de cantidad apostada",
       "Total ganado": "Total ganado",
       "Total perdido": "Total perdido",
-      "Total g/p": "Total g/p"
+      "Total g/p": "Total g/p",
+      "Historial de Premios":"Historial de Premios",
+      "Último Premio":"Último Premio",
+      "Mejor Premio":"Mejor Premio",
+      "Mayor Premio":"Mayor Premio",
+      "Mayor Apuesta":"Mayor Apuesta",
+      "Racha más Alta":"Racha más Alta",
+      "Consumibles":"Consumibles",
+      "Bebidas Alcohólicas":"Bebidas Alcohólicas",
+      "Bebidas Hidratantes":"Bebidas Hidratantes",
+      "Sustancias Tóxicas":"Sustancias Tóxicas"
     },
     "LOGIN": {
       "Iniciar sesion": "Iniciar sesión",
-      "Nombre de usuario": "Nombre de usuario",
-      "Introduzca su usuario": "Introduzca su usuario",
+      "Introduzca su email": "Introduzca su email",
       "Contraseña": "Contraseña",
       "Introduzca su contraseña": "Introduzca su contraseña",
       "Continuar": "Continuar",
-      "¿No tiene una cuenta? Regístrese": "¿No tiene una cuenta? Regístrese",
+      "¿No tiene una cuenta?": "¿No tiene una cuenta?",
+      "Regístrese":"Regístrese",
       "Entrar como invitado": "Entrar como invitado"
     },
     "REGISTER": {
@@ -54,9 +73,11 @@
       "Introduzca su email": "Introduzca su email",
       "Contraseña": "Contraseña",
       "Crear contraseña": "Crear contraseña",
+      "Confirmar contraseña": "Confirmar contraseña",
       "Fecha de nacimiento": "Fecha de nacimiento",
       "Crear cuenta": "Crear cuenta",
-      "¿Ya tiene una cuenta? Inicie sesión": "¿Ya tiene una cuenta? Inicie sesión",
+      "¿Ya tiene una cuenta?": "¿Ya tiene una cuenta?",
+      "Inicie sesion": "Inicie sesión",
       "Entrar como invitado": "Entrar como invitado"
     },
     "BALANCE": {

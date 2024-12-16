@@ -12,14 +12,24 @@
       "Tragaperras": "Slots",
       "EN/ES": "EN/ES",
       "Iniciar sesion": "Log In",
-      "Registrarse": "Sign Up"
+      "Registrarse": "Sign Up",
+      "Cerrar sesion": "Log out"
+      
     },
     "MAIN": {
       "Tus juegos favoritos": "Your Favorite Games",
       "Mas jugados": "Most Played",
-      "Mayores recompensas": "Highest Reward"
+      "Mayores recompensas": "Highest Reward",
+      "Ruleta": "Roulette",
+      "Blackjack": "Blackjack",
+      "Poker": "Poker",
+      "Carrera de caballos": "Horse Racing",
+      "Tragaperras": "Slots"
     },
     "PROFILE": {
+      "Cargando datos del perfil...":"Loading profile data...",
+      "Error:":"Error:",
+      "No se encontraron datos del perfil":"Profile data not found",
       "Información del usuario": "User Information",
       "Nombre": "Name",
       "ID del jugador": "Player ID",
@@ -34,16 +44,26 @@
       "Media de cantidad apostada": "Average Bet",
       "Total ganado": "Total Winnings",
       "Total perdido": "Total Losses",
-      "Total g/p": "Total w/l"
+      "Total g/p": "Total w/l",
+      "Historial de Premios":"Prize History",
+      "Último Premio":"Last Prize",
+      "Mejor Premio":"Best Prize",
+      "Mayor Premio":"Biggest Prize",
+      "Mayor Apuesta":"Biggest Bet",
+      "Racha más Alta":"Higgest Streak",
+      "Consumibles":"Consumables",
+      "Bebidas Alcohólicas":"Alcoholic Drinks",
+      "Bebidas Hidratantes":"Hydration Drinks",
+      "Sustancias Tóxicas":"Toxic Substances"
     },
     "LOGIN": {
       "Iniciar sesion": "Log In",
-      "Nombre de usuario": "Username",
-      "Introduzca su usuario": "Enter your username",
+      "Introduzca su email": "Enter your email",
       "Contraseña": "Password",
       "Introduzca su contraseña": "Enter your password",
       "Continuar": "Enter",
-      "¿No tiene una cuenta? Regístrese": "Don't have an account? Sign Up",
+      "¿No tiene una cuenta?": "Don't have an account?",
+      "Regístrese":"Sign up",
       "Entrar como invitado": "Enter as a guest"
     },
     "REGISTER": {
@@ -54,9 +74,11 @@
       "Introduzca su email": "Enter your email",
       "Contraseña": "Password",
       "Crear contraseña": "Create a password",
+      "Confirmar contraseña": "Confirm password",
       "Fecha de nacimiento": "Birth date",
       "Crear cuenta": "Create Account",
-      "¿Ya tiene una cuenta? Inicie sesión": "Already have an account? Log In",
+      "¿Ya tiene una cuenta?": "Already have an account?",
+      "Inicie sesion": "Log In",
       "Entrar como invitado": "Enter as a guest"
     },
     "BALANCE": {

@@ -4,8 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import axios from '../utils/axios';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
+  const {t}=useTranslation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
@@ -36,7 +38,7 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
       <Card className="max-w-md w-full">
         <h2 className="text-2xl font-bold text-yellow-500 text-center mb-6">
-          Log In
+          {t("LOGIN.Iniciar sesion")}
         </h2>
 
         {error && (
@@ -54,7 +56,7 @@ const Login = () => {
               type="email"
               name="email"
               className="form-input w-full text-black"
-              placeholder="Enter your email"
+              placeholder={t("LOGIN.Introduzca su email")}
               value={formData.email}
               onChange={handleChange}
               required
@@ -63,13 +65,13 @@ const Login = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-              Password
+            {t("LOGIN.Contraseña")}
             </label>
             <input
               type="password"
               name="password"
               className="form-input w-full text-black"
-              placeholder="Enter your password"
+              placeholder={t("LOGIN.Introduzca su contraseña")}
               value={formData.password}
               onChange={handleChange}
               required
@@ -77,18 +79,18 @@ const Login = () => {
           </div>
           
           <Button type="submit">
-            Enter
+          {t("LOGIN.Continuar")}
           </Button>
 
           <p className="text-center text-sm text-gray-400 mt-4">
-            Don't have an account?{' '}
+          {t("LOGIN.¿No tiene una cuenta?")}{' '}
             <Link to="/register" className="text-yellow-500 hover:underline">
-              Sign Up
+            {t("LOGIN.Regístrese")}
             </Link>
           </p>
           <p className="text-center text-sm text-gray-400 mt-4">
             <Link to="/" className="text-yellow-500 hover:underline">
-              Enter as a guest
+            {t("LOGIN.Entrar como invitado")}
             </Link>
           </p>
         </form>
