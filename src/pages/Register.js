@@ -6,7 +6,7 @@ import axios from '../utils/axios';
 import { useTranslation } from 'react-i18next';
 
 const Register = () => {
-  const {t}=useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
@@ -16,6 +16,7 @@ const Register = () => {
     birth_date: ''
   });
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -28,11 +29,15 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post('/register', formData);
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      navigate('/profile');
+      setSuccessMessage('Registro exitoso. Se ha enviado un correo de verificación a tu dirección de correo electrónico.');
+      setError(''); // Limpiar errores
+      // Opcional: Redirigir a la página de inicio de sesión después de un tiempo
+      setTimeout(() => {
+        navigate('/login');
+      }, 3000);
     } catch (err) {
-      setError(err.response?.data?.message || 'Error during registration');
+      setError(err.response?.data?.message || 'Error durante el registro');
+      setSuccessMessage(''); // Limpiar mensajes de éxito
     }
   };
 
@@ -40,7 +45,7 @@ const Register = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
       <Card className="max-w-md w-full">
         <h2 className="text-2xl font-bold text-yellow-500 text-center mb-6">
-        {t("REGISTER.Registrarse")}
+          {t("REGISTER.Registrarse")}
         </h2>
         
         {error && (
@@ -49,10 +54,16 @@ const Register = () => {
           </div>
         )}
 
+        {successMessage && (
+          <div className="mb-4 p-3 bg-green-500 bg-opacity-20 border border-green-500 text-green-500 rounded">
+            {successMessage}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-            {t("REGISTER.Nombre de usuario")}
+              {t("REGISTER.Nombre de usuario")}
             </label>
             <input
               type="text"
@@ -82,7 +93,7 @@ const Register = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-            {t("REGISTER.Contraseña")}
+              {t("REGISTER.Contraseña")}
             </label>
             <input
               type="password"
@@ -97,7 +108,7 @@ const Register = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-            {t("REGISTER.Confirmar contraseña")}
+              {t("REGISTER.Confirmar contraseña")}
             </label>
             <input
               type="password"
@@ -112,7 +123,7 @@ const Register = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-            {t("REGISTER.Fecha de nacimiento")}
+              {t("REGISTER.Fecha de nacimiento")}
             </label>
             <input
               type="date"
@@ -127,18 +138,18 @@ const Register = () => {
           </div>
 
           <Button type="submit">
-          {t("REGISTER.Crear cuenta")}
+            {t("REGISTER.Crear cuenta")}
           </Button>
 
           <p className="text-center text-sm text-gray-400 mt-4">
             {t("REGISTER.¿Ya tiene una cuenta?")}{' '}
             <Link to="/login" className="text-yellow-500 hover:underline">
-            {t("REGISTER.Inicie sesion")}
+              {t("REGISTER.Inicie sesion")}
             </Link>
           </p>
           <p className="text-center text-sm text-gray-400 mt-4">
             <Link to="/" className="text-yellow-500 hover:underline">
-            {t("REGISTER.Entrar como invitado")}
+              {t("REGISTER.Entrar como invitado")}
             </Link>
           </p>
         </form>

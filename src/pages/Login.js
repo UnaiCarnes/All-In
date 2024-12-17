@@ -25,12 +25,17 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/login', formData); // Asegúrate de que la ruta sea correcta
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      navigate('/profile'); // Redirige al perfil después de iniciar sesión
+        const response = await axios.post('/login', formData);
+        if (!response.data.user.email_verified_at) {
+            setError('Por favor, verifica tu correo electrónico antes de iniciar sesión.');
+            return;
+        }
+        // Continuar con el inicio de sesión
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+        navigate('/profile');
     } catch (err) {
-      setError(err.response?.data?.message || 'Invalid credentials');
+        setError(err.response?.data?.message || 'Credenciales inválidas');
     }
   };
 

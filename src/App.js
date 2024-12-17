@@ -9,6 +9,7 @@ import Balance from './pages/Balance';
 import Games from './pages/Games';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import VerifyEmail from './pages/VerifyEmail';
 import ConnectionTest from './components/test/ConnectionTest';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -21,7 +22,8 @@ const App = () => {
           {/* Rutas públicas */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          
+          <Route path="/email/verify/:id/:hash" element={<VerifyEmail />} />
+
           {/* Rutas protegidas */}
           <Route path="/profile" element={<PrivateRoute><Layout><Profile /></Layout></PrivateRoute>} />
           <Route path="/balance" element={<PrivateRoute><Layout><Balance /></Layout></PrivateRoute>} />
