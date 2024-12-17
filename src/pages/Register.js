@@ -15,13 +15,20 @@ const Register = () => {
     password_confirmation: '',
     birth_date: ''
   });
+
+  // Estado para errores y mensajes
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
+    });
+    setFieldErrors({
+      ...fieldErrors,
+      [e.target.name]: ''
     });
   };
 
@@ -30,14 +37,20 @@ const Register = () => {
     try {
       const response = await axios.post('/register', formData);
       setSuccessMessage('Registro exitoso. Se ha enviado un correo de verificación a tu dirección de correo electrónico.');
-      setError(''); // Limpiar errores
-      // Opcional: Redirigir a la página de inicio de sesión después de un tiempo
+      setError(''); 
+      setFieldErrors({});
       setTimeout(() => {
         navigate('/login');
       }, 3000);
     } catch (err) {
-      setError(err.response?.data?.message || 'Error durante el registro');
-      setSuccessMessage(''); // Limpiar mensajes de éxito
+      if (err.response?.data?.errors) {
+        // Extraer errores por campo
+        setFieldErrors(err.response.data.errors);
+        setError(''); // Limpiar mensaje general
+      } else {
+        setError(err.response?.data?.message || 'Error durante el registro');
+      }
+      setSuccessMessage('');
     }
   };
 
