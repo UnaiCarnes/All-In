@@ -19,35 +19,16 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-<<<<<<< HEAD
-/* Aseguramos que la página balance ocupe toda la pantalla */
-/* CSS de la página Balance */
-/* Balance page (contenedor principal) */
-/* Balance page (contenedor principal) */
-.balance-page {
-  height: 89.5vh;  /* Asegura que ocupe toda la altura de la ventana */
-  display: flex;
-  flex-direction: column;  /* Organiza los elementos verticalmente */
-=======
 .balance-page {
   min-height: 100%;
   display: flex;
   flex-direction: column;
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
   align-items: center;
   background-image: url('../public/img/fondo5.jpg');
   background-size: cover;
   background-position: center;
-<<<<<<< HEAD
-  background-attachment: fixed;  /* La imagen se mantiene fija al hacer scroll */
-}
-
-/* Asegura que html y body tengan altura completa */
-=======
   background-attachment: fixed;
 }
-
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
 .balance-page html,
 .balance-page body {
   height: 100%;
@@ -55,18 +36,6 @@ body {
   padding: 0;
 }
 
-<<<<<<< HEAD
-/* Ajuste del contenedor del Card (sin cambios mayores) */
-.balance-page .max-w-lg {
-  width: 100%;
-  max-width: 600px;  /* Mantiene un ancho máximo */
-  margin-top: 100px;  /* Deja espacio para el header fijo */
-  overflow-y: auto;  /* Habilita el scroll solo dentro del Card */
-  max-height: calc(100vh - 100px);  /* Limita la altura disponible para el scroll dentro del Card */
-}
-
-/* Imagen flotante en la esquina */
-=======
 .balance-page .max-w-lg {
   width: 100%;
   max-width: 600px;
@@ -74,15 +43,11 @@ body {
   margin-bottom: 2rem;
 }
 
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
 .balance-page img {
   object-fit: contain;
   max-width: 100%;
 }
 
-<<<<<<< HEAD
-
-=======
 @keyframes coinFlip {
   0% {
     transform: rotateY(0deg);
@@ -99,4 +64,4 @@ body {
 .logo-spinning {
   animation: coinFlip 1s linear;
 }
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
+

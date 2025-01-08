@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext'; // Ajusta la ruta del AuthContext
 
 const Header = () => {
   const logoRef = useRef(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user } = useAuth(); // Accedemos al usuario desde el contexto
 
   const handleLogoHover = () => {
     const logo = logoRef.current;
@@ -31,7 +33,7 @@ const Header = () => {
               to="/profile"
               className="flex items-center space-x-4 text-yellow-400 hover:text-yellow-300 transform transition-all duration-300 hover:scale-110"
             >
-              <span className="text-2xl font-bold">Profile</span>
+              <span className="text-2xl font-bold">{user ? user.name : 'Profile'}</span>
             </Link>
           </div>
         </div>
@@ -62,14 +64,17 @@ const Header = () => {
           </div>
 
           {/* Balance - Mover al extremo derecho */}
-          <div className="absolute right-12 hidden md:block z-10"> {/* Ajuste de espaciado */}
+          <div className="absolute right-12 hidden md:block z-10">
             <Link
               to="/balance"
               className="flex items-center space-x-4 text-yellow-400 hover:text-yellow-300 transform transition-all duration-300 hover:scale-110"
             >
-              <span className="text-2xl font-bold">Balance</span>
-              <img src="/img/moneda.png" alt="Coin" className="w-8 h-8" />
-              <span className="text-yellow-400 text-2xl font-bold">1000</span>
+              <span className="text-2xl font-bold">
+                Balance {user ? `: ${user.balance}` : ''}
+              </span>
+              {user && (
+                <img src="/img/moneda.png" alt="Coin" className="w-8 h-8" />
+              )}
             </Link>
           </div>
         </div>
@@ -94,14 +99,14 @@ const Header = () => {
                 className="block text-xl text-yellow-400 mb-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Profile
+                {user ? user.name : 'Profile'}
               </Link>
               <Link
                 to="/balance"
                 className="block text-xl text-yellow-400 mb-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Balance: 1000 <img src="/img/moneda.png" alt="Coin" className="w-6 h-6 inline" />
+                Balance {user ? `: ${user.balance}` : ''}
               </Link>
             </div>
           </div>

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext'; // Asegúrate de que el AuthContext esté importado
 
 const Sidebar = () => {
+  const { user, logout } = useContext(AuthContext); // Obtener el estado de autenticación y la función logout
+
   const games = [
     { name: 'Roulette', path: '/games' },
     { name: 'Blackjack', path: '/games' },
@@ -21,7 +24,7 @@ const Sidebar = () => {
     <aside className="fixed left-0 top-28 w-52 h-[calc(100vh-7rem)] bg-gray-800 p-5 flex flex-col">
       {/* Games List */}
       <div className="mb-7">
-        <h3 className="text-2xl text-yellow-400 mb-5 font-extrabold tracking-wide"> 
+        <h3 className="text-2xl text-yellow-400 mb-5 font-extrabold tracking-wide">
           Games
         </h3>
         <nav className="space-y-4 pl-4">
@@ -29,7 +32,7 @@ const Sidebar = () => {
             <Link
               key={index}
               to={game.path}
-              className="block text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110" // Añadida la animación
+              className="block text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110"
             >
               {game.name}
             </Link>
@@ -46,15 +49,28 @@ const Sidebar = () => {
         <button className="text-lg text-gray-300 hover:text-yellow-400 mx-3 transition-all duration-300 transform hover:scale-110">ES</button>
       </div>
 
+      {/* Opciones de autenticación */}
       <div className="border-t border-gray-700 pt-5 mb-7 flex justify-between">
-        <Link to="/login" className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110">
-          Log In
-        </Link>
-        <Link to="/register" className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110">
-          Sign Up
-        </Link>
+        {!user ? (
+          <>
+            <Link to="/login" className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110">
+              Log In
+            </Link>
+            <Link to="/register" className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110">
+              Sign Up
+            </Link>
+          </>
+        ) : (
+          <button
+            onClick={logout} // Llamada a la función logout
+            className="text-lg text-gray-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110"
+          >
+            Sign Out
+          </button>
+        )}
       </div>
 
+      {/* Redes sociales */}
       <div className="border-t border-gray-700 pt-5">
         <div className="flex justify-center space-x-5">
           {socialLinks.map((social) => (

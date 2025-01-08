@@ -32,20 +32,11 @@ const Login = () => {
   };
 
   return (
-<<<<<<< HEAD
-
-    <div className="min-h-screen flex items-center justify-center bg-gray-900" style={{
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-      }}> 
-=======
     <div className="min-h-screen flex items-center justify-center bg-gray-900" style={{
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundAttachment: 'fixed',
     }}>
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
       <Card className="max-w-md w-full">
         <h2 className="text-2xl font-bold text-yellow-500 text-center mb-6">
           Log In
@@ -64,10 +55,7 @@ const Login = () => {
             </label>
             <input
               type="text"
-<<<<<<< HEAD
-=======
               name="email"
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
               className="form-input w-full text-black"
               placeholder="Enter your username"
               value={formData.email}
@@ -82,10 +70,7 @@ const Login = () => {
             </label>
             <input
               type="password"
-<<<<<<< HEAD
-=======
               name="password"
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
               className="form-input w-full text-black"
               placeholder="Enter your password"
               value={formData.password}

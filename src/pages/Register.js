@@ -54,10 +54,7 @@ const Register = () => {
             </label>
             <input
               type="text"
-<<<<<<< HEAD
-=======
               name="name"
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
               className="form-input w-full text-black"
               placeholder="Choose a username"
               value={formData.name}
@@ -72,10 +69,7 @@ const Register = () => {
             </label>
             <input
               type="email"
-<<<<<<< HEAD
-=======
               name="email"
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
               className="form-input w-full text-black"
               placeholder="Enter your email"
               value={formData.email}
@@ -90,10 +84,7 @@ const Register = () => {
             </label>
             <input
               type="password"
-<<<<<<< HEAD
-=======
               name="password"
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
               className="form-input w-full text-black"
               placeholder="Create a password"
               value={formData.password}

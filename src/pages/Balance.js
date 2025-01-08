@@ -13,11 +13,7 @@ const BankOption = ({ bank, amount, interest, bets }) => {
     <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition duration-200">
       <h3 className="text-lg font-bold text-yellow-400">{bank}</h3>
       <p className="text-sm">
-<<<<<<< HEAD
-        Préstamo de{' '}
-=======
         Loan of{' '}
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
         <img
           src="/img/moneda.png"
           alt="Coin"
@@ -28,11 +24,9 @@ const BankOption = ({ bank, amount, interest, bets }) => {
           onClick={() => setShowDetails(!showDetails)}
           className="text-xs text-yellow-400 cursor-pointer hover:underline float-end"
         >
-<<<<<<< HEAD
-          {showDetails ? 'Ocultar' : 'Más Información'}
-=======
+
           {showDetails ? 'Hide' : 'More information'}
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
+
         </span>
       </p>
 
@@ -41,20 +35,7 @@ const BankOption = ({ bank, amount, interest, bets }) => {
           className="mt-2 text-sm text-gray-300 max-h-40 overflow-y-auto"
         >
           <p>
-<<<<<<< HEAD
-            <strong>A devolución del:</strong>{' '}
-            <span className="text-yellow-400">{interest}%</span>
-          </p>
-          <p>
-            <strong>Tiradas:</strong> <span className="text-yellow-400">{bets}</span>
-          </p>
-          <p>
-            <strong>Total a devolver:</strong>{' '}
-            <span className="text-yellow-400">{totalAmountToPay.toFixed(2)}</span>
-          </p>
-          <p>
-            <strong>Costo por tirada(Acumulable):</strong>{' '}
-=======
+
             <strong>Upon return of:</strong>{' '}
             <span className="text-yellow-400">{interest}%</span>
           </p>
@@ -67,16 +48,12 @@ const BankOption = ({ bank, amount, interest, bets }) => {
           </p>
           <p>
             <strong>Cost per bet(Comulative):</strong>{' '}
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
             <span className="text-yellow-400">{costPerBet.toFixed(2)}</span>
           </p>
         </div>
       )}
-<<<<<<< HEAD
-      <Button className="mt-4">Seleccionar Préstamo</Button>
-=======
       <Button className="mt-4">Select loan</Button>
->>>>>>> 05db4ebda824695f086429a8ab794a1d4877e903
+
     </div>
   );
 };
