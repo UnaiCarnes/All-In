@@ -1,0 +1,97 @@
+{
+    "HEADER": {
+      "Perfil": "Profila",
+      "Balance": "Saldoa"
+    },
+    "ASIDE": {
+      "Juegos": "Jokoak",
+      "Ruleta": "Ruleta",
+      "Blackjack": "Blackjack",
+      "Poker": "Pokerra",
+      "Carrera de caballos": "Zaldi-lasterketak",
+      "Tragaperras": "Txanpon-makinak",
+      "EN/ES": "EN/EU",
+      "Iniciar sesion": "Hasi saioa",
+      "Registrarse": "Erregistratu",
+      "Cerrar sesion": "Itxi saioa"
+    },
+    "MAIN": {
+      "Tus juegos favoritos": "Zure joko gogokoenak",
+      "Mas jugados": "Jokatuenak",
+      "Mayores recompensas": "Sari handienak",
+      "Ruleta": "Ruleta",
+      "Blackjack": "Blackjack",
+      "Poker": "Pokerra",
+      "Carrera de caballos": "Zaldi-lasterketak",
+      "Tragaperras": "Txanpon-makinak"
+    },
+    "PROFILE": {
+      "Cargando datos del perfil...":"Perfileko informazioa kargatzen...",
+      "Error:":"Errorea:",
+      "No se encontraron datos del perfil":"Perfileko informazioa ez da aurkitu",
+      "Información del usuario": "Erabiltzailearen informazioa",
+      "Nombre": "Izena",
+      "ID del jugador": "Jokalariaren IDa",
+      "Balance disponible": "Eskuragarri dagoen saldoa",
+      "Email": "Emaila",
+      "Estadísticas de juego": "Joko estatistikak",
+      "Juegos jugados": "Jokatutako jokoak",
+      "Juego mas jugado": "Jokatutako joko ohikoena",
+      "Juegos ganados": "Irabazitako jokoak",
+      "Juegos perdidos": "Galdutako jokoak",
+      "Media de juegos ganados": "Irabazitako jokoen batez bestekoa",
+      "Media de cantidad apostada": "Apostatutako kopuruaren batez bestekoa",
+      "Total ganado": "Irabazitakoa guztira",
+      "Total perdido": "Galdutakoa guztira",
+      "Total g/p": "Irabazi/galera guztira",
+      "Historial de Premios":"Sarien historiala",
+      "Último Premio":"Azken Saria",
+      "Mejor Premio":"Saria Hoberena",
+      "Mayor Premio":"Saria Haundiena",
+      "Mayor Apuesta":"Apostu Haundiena",
+      "Racha más Alta":"Boladarik Haundiena",
+      "Consumibles":"Kontsumigarriak",
+      "Bebidas Alcohólicas":"Edari alkoholdunak",
+      "Bebidas Hidratantes":"Edari hidratatzaileak",
+      "Sustancias Tóxicas":"Substantziak Toxikoak"
+    },
+    "LOGIN": {
+      "Iniciar sesion": "Hasi saioa",
+      "Introduzca su email": "Idatzi zure email",
+      "Contraseña": "Pasahitza",
+      "Introduzca su contraseña": "Idatzi zure pasahitza",
+      "Continuar": "Jarraitu",
+      "¿No tiene una cuenta?": "Ez duzu konturik?",
+      "Regístrese":"Erregistratu",
+      "Entrar como invitado": "Gonbidatu gisa sartu"
+    },
+    "REGISTER": {
+      "Registrarse": "Erregistratu",
+      "Nombre de usuario": "Erabiltzaile izena",
+      "Elija su usuario": "Hautatu zure erabiltzailea",
+      "Email": "Emaila",
+      "Introduzca su email": "Idatzi zure emaila",
+      "Contraseña": "Pasahitza",
+      "Crear contraseña": "Sortu pasahitza",
+      "Confirmar contraseña": "Baieztatu pasahitza",
+      "Fecha de nacimiento": "Jaiotze data",
+      "Crear cuenta": "Sortu kontua",
+      "¿Ya tiene una cuenta?": "Baduzu kontu bat?",
+      "Inicie sesion": "Hasi saioa",
+      "Entrar como invitado": "Gonbidatu gisa sartu"
+    },
+    "BALANCE": {
+      "Opciones para Agregar Saldo": "Saldoa gehitzeko aukerak",
+      "Selecciona una opción de préstamo bancario para agregar saldo a tu cuenta": "Aukeratu banku-mailegu bat zure kontura saldoa gehitzeko",
+      "Cucha": "Cucha",
+      "Préstamo de": "Mailegu bat",
+      "Mas información": "Informazio gehiago",
+      "Ocultar": "Ezkutatu",
+      "A devolución del": "Itzulketaren data:",
+      "Tiradas": "Tiradak",
+      "Total a devolver": "Itzuli beharrekoa guztira",
+      "Costo por tirada(Acumulable)": "Tirada bakoitzeko kostua (metagarria)",
+      "Seleccionar Préstamo": "Hautatu Mailegua"
+    }
+  }
+  

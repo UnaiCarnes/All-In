@@ -1,0 +1,97 @@
+{
+    "HEADER": {
+      "Perfil": "Perfil",
+      "Balance": "Balance"
+    },
+    "ASIDE": {
+      "Juegos": "Juegos",
+      "Ruleta": "Ruleta",
+      "Blackjack": "Blackjack",
+      "Poker": "Poker",
+      "Carrera de caballos": "Carrera de caballos",
+      "Tragaperras": "Tragaperras",
+      "EN/ES": "EN/ES",
+      "Iniciar sesion": "Iniciar sesión",
+      "Registrarse": "Registrarse",
+      "Cerrar sesion": "Cerrar sesion"
+    },
+    "MAIN": {
+      "Tus juegos favoritos": "Tus juegos favoritos",
+      "Mas jugados": "Más jugados",
+      "Mayores recompensas": "Mayores recompensas",
+      "Ruleta": "Ruleta",
+      "Blackjack": "Blackjack",
+      "Poker": "Poker",
+      "Carrera de caballos": "Carrera de caballos",
+      "Tragaperras": "Tragaperras"
+    },
+    "PROFILE": {
+      "Cargando datos del perfil...":"Cargando datos del perfil...",
+      "Error:":"Error:",
+      "No se encontraron datos del perfil":"No se encontraron datos del perfil",
+      "Información del usuario": "Información del usuario",
+      "Nombre": "Nombre",
+      "ID del jugador": "ID del jugador",
+      "Balance disponible": "Balance disponible",
+      "Email": "Email",
+      "Estadísticas de juego": "Estadísticas de juego",
+      "Juegos jugados": "Juegos jugados",
+      "Juego mas jugado": "Juego más jugado",
+      "Juegos ganados": "Juegos ganados",
+      "Juegos perdidos": "Juegos perdidos",
+      "Media de juegos ganados": "Media de juegos ganados",
+      "Media de cantidad apostada": "Media de cantidad apostada",
+      "Total ganado": "Total ganado",
+      "Total perdido": "Total perdido",
+      "Total g/p": "Total g/p",
+      "Historial de Premios":"Historial de Premios",
+      "Último Premio":"Último Premio",
+      "Mejor Premio":"Mejor Premio",
+      "Mayor Premio":"Mayor Premio",
+      "Mayor Apuesta":"Mayor Apuesta",
+      "Racha más Alta":"Racha más Alta",
+      "Consumibles":"Consumibles",
+      "Bebidas Alcohólicas":"Bebidas Alcohólicas",
+      "Bebidas Hidratantes":"Bebidas Hidratantes",
+      "Sustancias Tóxicas":"Sustancias Tóxicas"
+    },
+    "LOGIN": {
+      "Iniciar sesion": "Iniciar sesión",
+      "Introduzca su email": "Introduzca su email",
+      "Contraseña": "Contraseña",
+      "Introduzca su contraseña": "Introduzca su contraseña",
+      "Continuar": "Continuar",
+      "¿No tiene una cuenta?": "¿No tiene una cuenta?",
+      "Regístrese":"Regístrese",
+      "Entrar como invitado": "Entrar como invitado"
+    },
+    "REGISTER": {
+      "Registrarse": "Registrarse",
+      "Nombre de usuario": "Nombre de usuario",
+      "Elija su usuario": "Elija su usuario",
+      "Email": "Email",
+      "Introduzca su email": "Introduzca su email",
+      "Contraseña": "Contraseña",
+      "Crear contraseña": "Crear contraseña",
+      "Confirmar contraseña": "Confirmar contraseña",
+      "Fecha de nacimiento": "Fecha de nacimiento",
+      "Crear cuenta": "Crear cuenta",
+      "¿Ya tiene una cuenta?": "¿Ya tiene una cuenta?",
+      "Inicie sesion": "Inicie sesión",
+      "Entrar como invitado": "Entrar como invitado"
+    },
+    "BALANCE": {
+      "Opciones para Agregar Saldo": "Opciones para Agregar Saldo",
+      "Selecciona una opción de préstamo bancario para agregar saldo a tu cuenta": "Selecciona una opción de préstamo bancario para agregar saldo a tu cuenta",
+      "Cucha": "Cucha",
+      "Préstamo de": "Préstamo de",
+      "Mas información": "Más información",
+      "Ocultar": "Ocultar",
+      "A devolución del": "A devolución del",
+      "Tiradas": "Tiradas",
+      "Total a devolver": "Total a devolver",
+      "Costo por tirada(Acumulable)": "Costo por tirada (Acumulable)",
+      "Seleccionar Préstamo": "Seleccionar Préstamo"
+    }
+  }
+  

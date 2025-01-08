@@ -7,7 +7,7 @@ const ConnectionTest = () => {
   useEffect(() => {
     const testConnection = async () => {
       try {
-        const url = 'http://localhost:8000/api/test';
+        const url = 'http://10.14.4.170:8000/api/test';
         console.log('Intentando conectar a:', url);
 
         const response = await axios({

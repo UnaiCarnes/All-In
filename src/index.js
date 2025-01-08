@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './App'; // Corregido el nombre del archivo para que coincida con el caso correcto
 import reportWebVitals from './reportWebVitals';
+import "./config/i18n";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
