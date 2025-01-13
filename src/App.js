@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import VerifyEmail from './pages/VerifyEmail';
 import ConnectionTest from './components/test/ConnectionTest';
 import PrivateRoute from './components/PrivateRoute';
+import Blackjack from './pages/Blackjack/Blackjack'; // Importar el componente Blackjack
 
 const App = () => {
   return (
@@ -30,7 +31,7 @@ const App = () => {
           
           {/* Rutas con Layout */}
           <Route path="/" element={<Layout><Home /></Layout>} />
-          <Route path="/games" element={<Layout><Games /></Layout>} />
+          <Route path="/games" element={<PrivateRoute><Layout><Blackjack /></Layout></PrivateRoute>} />
         </Routes>
       </Router>
     </I18nextProvider>
