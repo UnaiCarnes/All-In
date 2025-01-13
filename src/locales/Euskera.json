@@ -23,7 +23,9 @@
       "Blackjack": "Blackjack",
       "Poker": "Pokerra",
       "Carrera de caballos": "Zaldi-lasterketak",
-      "Tragaperras": "Txanpon-makinak"
+      "Tragaperras": "Txanpon-makinak",
+      "Modificar Secciones":"Sekzioak Aldatu",
+      "Modificar Orden": "Ordena Aldatu"
     },
     "PROFILE": {
       "Cargando datos del perfil...":"Perfileko informazioa kargatzen...",
@@ -53,7 +55,11 @@
       "Consumibles":"Kontsumigarriak",
       "Bebidas Alcohólicas":"Edari alkoholdunak",
       "Bebidas Hidratantes":"Edari hidratatzaileak",
-      "Sustancias Tóxicas":"Substantziak Toxikoak"
+      "Sustancias Tóxicas":"Substantziak Toxikoak",
+      "Lista de Usuarios Registrados":"Erregistratutako Erabiltzaileen Zerrenda",
+      "Editar":"Editatu",
+      "Eliminar":"Deuseztatu",
+      "Acciones":"Ekintzak"
     },
     "LOGIN": {
       "Iniciar sesion": "Hasi saioa",

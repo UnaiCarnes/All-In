@@ -1,14 +1,16 @@
-// src/components/layout/Sidebar.js
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useContext, useEffect } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 const Sidebar = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('user'));
+  const { user, logout } = useContext(UserContext);
 
   const handleLogout = () => {
+    logout(); 
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     navigate('/login');
@@ -16,15 +18,15 @@ const Sidebar = () => {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    localStorage.setItem('language', lng);
-  };
+    localStorage.setItem('language', lng); // Solo guarda el código del idioma
+  };  
 
   const games = [
-    { name: t('ASIDE.Ruleta'), path: '/games' },
-    { name: t('ASIDE.Blackjack'), path: '/games' },
-    { name: t('ASIDE.Poker'), path: '/games' },
-    { name: t('ASIDE.Carrera de caballos'), path: '/games' },
-    { name: t('ASIDE.Tragaperras'), path: '/games' },
+    { name: t('ASIDE.Ruleta'), path: '/roulettes' },
+    { name: t('ASIDE.Blackjack'), path: '/blackjacks' },
+    { name: t('ASIDE.Poker'), path: '/pokers' },
+    { name: t('ASIDE.Carrera de caballos'), path: '/races' },
+    { name: t('ASIDE.Tragaperras'), path: '/slots' },
   ];
 
   const socialLinks = [
@@ -33,6 +35,11 @@ const Sidebar = () => {
     { name: 'Email', icon: '/img/email.svg', url: 'mailto:casino.allin.official@gmail.com' },
     { name: 'TikTok', icon: '/img/tik-tok.svg', url: 'https://www.tiktok.com/@all_in.official' }
   ];
+
+  // Para depuración: observar cambios en `user`
+  useEffect(() => {
+    console.log("User state in Sidebar:", user);
+  }, [user]);
 
   return (
     <aside className="fixed left-0 top-28 w-52 h-[calc(100vh-7rem)] bg-gray-800 p-5 flex flex-col">
@@ -59,7 +66,7 @@ const Sidebar = () => {
       {/* Language Selector */}
       <div className="flex justify-center mb-5 border-t border-gray-700 pt-5">
         <select 
-          value={i18n.language} // Establecer el valor del select según el idioma actual
+          value={i18n.language}
           onChange={(e) => changeLanguage(e.target.value)} 
           className="text-lg text-gray-300 bg-gray-800 border border-gray-700 rounded p-2"
         >
@@ -109,7 +116,7 @@ const Sidebar = () => {
               <img 
                 src={social.icon} 
                 alt={social.name}
-                className="w-8 h-8 filter brightness-0 invert" // Aplica el filtro para cambiar a blanco
+                className="w-8 h-8 filter brightness-0 invert"
               />
             </a>
           ))}

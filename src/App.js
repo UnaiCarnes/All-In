@@ -7,32 +7,45 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Balance from './pages/Balance';
 import Games from './pages/Games';
+import Pokers from './pages/Pokers';
+import Blackjacks from './pages/Blackjacks';
+import Races from './pages/Races';
+import Slots from './pages/Slots';
+import Roulettes from './pages/Roulettes';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import VerifyEmail from './pages/VerifyEmail';
 import ConnectionTest from './components/test/ConnectionTest';
 import PrivateRoute from './components/PrivateRoute';
+import { UserProvider } from './context/UserContext';  // Importa el UserProvider
 
 const App = () => {
   return (
     <I18nextProvider i18n={i18n}>
-      <Router>
-        <ConnectionTest />
-        <Routes>
-          {/* Rutas públicas */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/email/verify/:id/:hash" element={<VerifyEmail />} />
+      <UserProvider>  {/* Envolvemos la app con UserProvider */}
+        <Router>
+          <ConnectionTest />
+          <Routes>
+            {/* Rutas públicas */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/email/verify/:id/:hash" element={<VerifyEmail />} />
 
-          {/* Rutas protegidas */}
-          <Route path="/profile" element={<PrivateRoute><Layout><Profile /></Layout></PrivateRoute>} />
-          <Route path="/balance" element={<PrivateRoute><Layout><Balance /></Layout></PrivateRoute>} />
-          
-          {/* Rutas con Layout */}
-          <Route path="/" element={<Layout><Home /></Layout>} />
-          <Route path="/games" element={<Layout><Games /></Layout>} />
-        </Routes>
-      </Router>
+            {/* Rutas protegidas */}
+            <Route path="/profile" element={<PrivateRoute><Layout><Profile /></Layout></PrivateRoute>} />
+            <Route path="/balance" element={<PrivateRoute><Layout><Balance /></Layout></PrivateRoute>} />
+            
+            {/* Rutas con Layout */}
+            <Route path="/" element={<Layout><Home /></Layout>} />
+            <Route path="/games" element={<Layout><Games /></Layout>} />
+            <Route path="/roulettes" element={<Layout><Roulettes /></Layout>} />
+            <Route path="/slots" element={<Layout><Slots /></Layout>} />
+            <Route path="/pokers" element={<Layout><Pokers /></Layout>} />
+            <Route path="/blackjacks" element={<Layout><Blackjacks /></Layout>} />
+            <Route path="/races" element={<Layout><Races /></Layout>} />
+          </Routes>
+        </Router>
+      </UserProvider>
     </I18nextProvider>
   );
 };

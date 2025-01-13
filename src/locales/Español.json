@@ -23,7 +23,9 @@
       "Blackjack": "Blackjack",
       "Poker": "Poker",
       "Carrera de caballos": "Carrera de caballos",
-      "Tragaperras": "Tragaperras"
+      "Tragaperras": "Tragaperras",
+      "Modificar Secciones":"Modificar Secciones",
+      "Modificar Orden": "Modificar Orden"
     },
     "PROFILE": {
       "Cargando datos del perfil...":"Cargando datos del perfil...",
@@ -53,7 +55,11 @@
       "Consumibles":"Consumibles",
       "Bebidas Alcohólicas":"Bebidas Alcohólicas",
       "Bebidas Hidratantes":"Bebidas Hidratantes",
-      "Sustancias Tóxicas":"Sustancias Tóxicas"
+      "Sustancias Tóxicas":"Sustancias Tóxicas",
+      "Lista de Usuarios Registrados":"Lista de Usuarios Registrados",
+      "Editar":"Editar",
+      "Eliminar":"Eliminar",
+      "Acciones":"Acciones"
     },
     "LOGIN": {
       "Iniciar sesion": "Iniciar sesión",

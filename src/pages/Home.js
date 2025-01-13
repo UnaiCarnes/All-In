@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import GameCard from '../components/ui/GameCard';
 import { useTranslation } from 'react-i18next';
+import { UserContext } from '../context/UserContext';
 
 const Home = () => {
   const { t } = useTranslation();
-  const [randomizedGames, setRandomizedGames] = useState([]);
+  const { user, loading } = useContext(UserContext);
 
-  // Definir los juegos dentro del renderizado
+  const [randomizedGames, setRandomizedGames] = useState([]);
+  const [sectionsOrder, setSectionsOrder] = useState([]);
+
   const games = [
     { id: 1, title: t("MAIN.Ruleta"), image: '/img/juego1.png' },
     { id: 2, title: t("MAIN.Tragaperras"), image: '/img/juego2.png' },
@@ -19,25 +22,55 @@ const Home = () => {
     { id: 9, title: t("MAIN.Tragaperras"), image: '/img/juego9.png' },
   ];
 
+  // Claves de las secciones para traducción
+  const sectionKeys = [
+    "MAIN.Tus juegos favoritos",
+    "MAIN.Mas jugados",
+    "MAIN.Mayores recompensas",
+  ];
+
+  // Inicialización del orden de las secciones
+  useEffect(() => {
+    const savedOrder = localStorage.getItem('sectionsOrder');
+    if (savedOrder) {
+      setSectionsOrder(JSON.parse(savedOrder));
+    } else {
+      setSectionsOrder(sectionKeys); // Usar claves de traducción
+    }
+  }, []);
+
+  // Inicialización de juegos aleatorios
   useEffect(() => {
     const shuffleGames = () => {
-      const shuffled = [...games]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 6); // Tomamos solo 6 juegos para cada sección
+      const shuffled = [...games].sort(() => Math.random() - 0.5).slice(0, 6);
       setRandomizedGames(shuffled);
     };
 
     shuffleGames();
-  }, []);
+  }, [t]);
 
-  const renderGameSection = (title) => (
+  // Modificar el orden de las secciones
+  const handleReorderSections = () => {
+    if (sectionsOrder.length > 1) {
+      const newOrder = [
+        sectionsOrder[1],
+        sectionsOrder[2],
+        sectionsOrder[0],
+      ];
+      setSectionsOrder(newOrder);
+      localStorage.setItem('sectionsOrder', JSON.stringify(newOrder));
+    }
+  };
+
+  // Renderizar una sección con traducción dinámica
+  const renderGameSection = (key) => (
     <section className="mb-12 last:mb-0">
-      <h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">{title}</h2>
+      <h2 className="text-4xl font-bold text-yellow-400 mb-8 text-center">{t(key)}</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
         {randomizedGames.map((game, index) => (
-          <GameCard 
-            key={`${title}-${index}`}
-            title={game.title} // Aquí se usa el título traducido
+          <GameCard
+            key={`${key}-${index}`}
+            title={game.title}
             image={game.image}
           />
         ))}
@@ -45,11 +78,27 @@ const Home = () => {
     </section>
   );
 
+  const renderAdminTools = () => (
+    <section className="mb-12 last:mb-0">
+      <div className="flex space-x-4">
+        <button
+          className="bg-gray-800 text-yellow-400 px-4 py-2 rounded-md"
+          onClick={handleReorderSections}
+        >
+          {t("MAIN.Modificar Secciones")}
+        </button>
+      </div>
+    </section>
+  );
+
+  if (loading) {
+    return <div>Cargando...</div>; // Indicador de carga
+  }
+
   return (
     <div className="space-y-8 px-12 py-8 max-w-[1920px] mx-auto">
-      {renderGameSection(t("MAIN.Tus juegos favoritos"))}
-      {renderGameSection(t("MAIN.Mas jugados"))}
-      {renderGameSection(t("MAIN.Mayores recompensas"))}
+      {user?.role === 'admin' && renderAdminTools()}
+      {sectionsOrder.map((sectionKeys) => renderGameSection(sectionKeys))}
     </div>
   );
 };

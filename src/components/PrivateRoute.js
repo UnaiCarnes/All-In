@@ -3,9 +3,8 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
-  const user = localStorage.getItem('user'); // Verifica si hay un usuario en localStorage
-
-  return user ? children : <Navigate to="/login" />; // Redirige a login si no hay usuario
+  const token = localStorage.getItem('token');
+  return token ? children : <Navigate to="/login" replace />;
 };
 
 export default PrivateRoute;

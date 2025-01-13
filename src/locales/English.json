@@ -24,7 +24,9 @@
       "Blackjack": "Blackjack",
       "Poker": "Poker",
       "Carrera de caballos": "Horse Racing",
-      "Tragaperras": "Slots"
+      "Tragaperras": "Slots",
+      "Modificar Secciones":"Modify Sections",
+      "Modificar Orden": "Modify Order"
     },
     "PROFILE": {
       "Cargando datos del perfil...":"Loading profile data...",
@@ -54,7 +56,11 @@
       "Consumibles":"Consumables",
       "Bebidas Alcohólicas":"Alcoholic Drinks",
       "Bebidas Hidratantes":"Hydration Drinks",
-      "Sustancias Tóxicas":"Toxic Substances"
+      "Sustancias Tóxicas":"Toxic Substances",
+      "Lista de Usuarios Registrados":"List of Registered Users",
+      "Editar":"Edit",
+      "Eliminar":"Remove",
+      "Acciones":"Actions"
     },
     "LOGIN": {
       "Iniciar sesion": "Log In",

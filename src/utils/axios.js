@@ -1,34 +1,30 @@
+// src/utils/axios.js
 import axios from 'axios';
 
-// Obtener el token CSRF
-const getCsrfToken = async () => {
-    await axios.get('http://10.14.4.170:8000/sanctum/csrf-cookie', { withCredentials: true });
-};
-
-const api = axios.create({
-    baseURL: 'http://10.14.4.170:8000/api',
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-    },
-    withCredentials: true, // Asegúrate de que esto esté habilitado
+const instance = axios.create({
+  baseURL: 'http://10.14.4.170:8000/api',
 });
 
-// Interceptores para agregar el token CSRF
-api.interceptors.request.use(async (request) => {
-    await getCsrfToken(); // Asegúrate de obtener el token CSRF antes de cada solicitud
-    return request;
+// Interceptar solicitudes para agregar el token dinámicamente
+instance.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token'); // Obtener el token actualizado
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
 });
 
-api.interceptors.response.use(
-    response => {
-        console.log('Response:', response);
-        return response;
-    },
-    error => {
-        console.log('Response Error:', error);
-        return Promise.reject(error);
+// Interceptar respuestas para manejar errores de autenticación
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/login'; // Redirigir al login si el token es inválido
     }
+    return Promise.reject(error);
+  }
 );
 
-export default api;
+export default instance;
