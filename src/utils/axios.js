@@ -1,25 +1,29 @@
 import axios from 'axios';
 
-// Obtener el token CSRF
-const getCsrfToken = async () => {
-    await axios.get('http://10.14.4.170:8000/sanctum/csrf-cookie', { withCredentials: true });
-};
-
 const api = axios.create({
     baseURL: 'http://10.14.4.170:8000/api',
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
     },
-    withCredentials: true, // Asegúrate de que esto esté habilitado
+    withCredentials: true,
 });
 
-// Interceptores para agregar el token CSRF
-api.interceptors.request.use(async (request) => {
-    await getCsrfToken(); // Asegúrate de obtener el token CSRF antes de cada solicitud
-    return request;
-});
+// Interceptor para añadir el token de autenticación
+api.interceptors.request.use(
+    async (config) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
+        return config;
+    },
+    error => {
+        return Promise.reject(error);
+    }
+);
 
+// Interceptor para manejar respuestas
 api.interceptors.response.use(
     response => {
         console.log('Response:', response);
@@ -27,6 +31,10 @@ api.interceptors.response.use(
     },
     error => {
         console.log('Response Error:', error);
+        // Solo redirigir al login si no estamos ya en la página de login
+        if (error.response?.status === 401 && !window.location.pathname.includes('/login')) {
+            window.location.href = '/login';
+        }
         return Promise.reject(error);
     }
 );

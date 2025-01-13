@@ -91,7 +91,14 @@
       "Tiradas": "Tiradas",
       "Total a devolver": "Total a devolver",
       "Costo por tirada(Acumulable)": "Costo por tirada (Acumulable)",
-      "Seleccionar Préstamo": "Seleccionar Préstamo"
+      "Seleccionar Préstamo": "Seleccionar Préstamo",
+      "Préstamo Activo": "Préstamo Activo",
+      "Préstamo concedido exitosamente": "Préstamo concedido exitosamente",
+      "Cargando...": "Cargando...",
+      "Error al procesar el préstamo": "Error al procesar el préstamo",
+      "Este préstamo ya está activo": "Este préstamo ya está activo",
+      "Error al cargar préstamos": "Error al cargar préstamos",
+      "Debes completar las tiradas requeridas": "Debes completar las tiradas requeridas"
     }
   }
   

@@ -91,7 +91,14 @@
       "Tiradas": "Tiradak",
       "Total a devolver": "Itzuli beharrekoa guztira",
       "Costo por tirada(Acumulable)": "Tirada bakoitzeko kostua (metagarria)",
-      "Seleccionar Préstamo": "Hautatu Mailegua"
+      "Seleccionar Préstamo": "Hautatu Mailegua",
+      "Préstamo Activo": "Maleegu aktiboa",
+      "Préstamo concedido exitosamente": "Malegua ongi eman da",
+      "Cargando...": "Kargatzen...",
+      "Error al procesar el préstamo": "Errorea maileguaren kudeaketa",
+      "Este préstamo ya está activo": "Maleegu aktiboa",
+      "Error al cargar préstamos": "Errorea maileguen kargaketa",
+      "Debes completar las tiradas requeridas": "Eragotu behar duzu betetu beharreko tiradak"
     }
   }
   

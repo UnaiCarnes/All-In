@@ -24,18 +24,24 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     try {
         const response = await axios.post('/login', formData);
+        
         if (!response.data.user.email_verified_at) {
-            setError('Por favor, verifica tu correo electrónico antes de iniciar sesión.');
+            setError(t('LOGIN.Verifica tu correo electrónico'));
             return;
         }
-        // Continuar con el inicio de sesión
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        navigate('/profile');
+
+        if (response.data.token) {
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            navigate('/profile');
+        } else {
+            setError(t('LOGIN.Error al obtener el token'));
+        }
     } catch (err) {
-        setError(err.response?.data?.message || 'Credenciales inválidas');
+        setError(err.response?.data?.message || t('LOGIN.Credenciales inválidas'));
     }
   };
 

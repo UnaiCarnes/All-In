@@ -92,7 +92,14 @@
       "Tiradas": "Bets",
       "Total a devolver": "Total to be returned",
       "Costo por tirada(Acumulable)": "Cost per bet (cumulative)",
-      "Seleccionar Préstamo": "Select loan"
+      "Seleccionar Préstamo": "Select loan",
+      "Préstamo Activo": "Active loan",
+      "Préstamo concedido exitosamente": "Loan granted successfully",
+      "Cargando...": "Loading...",
+      "Error al procesar el préstamo": "Error processing loan",
+      "Este préstamo ya está activo": "This loan is already active",
+      "Error al cargar préstamos": "Error loading loans",
+      "Debes completar las tiradas requeridas": "You must complete the required bets"
     }
   }
   
