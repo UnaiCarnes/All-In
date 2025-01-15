@@ -50,6 +50,8 @@ const Blackjack = () => {
   });
 
   const [statusKey, setStatusKey] = useState(0);
+  const [currentStreak, setCurrentStreak] = useState(0);
+  const [highestStreak, setHighestStreak] = useState(0);
 
   const drawCard = (dealType) => {
     if (deck.length > 0) {
@@ -57,7 +59,6 @@ const Blackjack = () => {
       const card = deck[randomIndex];
       deck.splice(randomIndex, 1);
       setDeck([...deck]);
-      console.log('Remaining Cards:', deck.length);
       switch (card.suit) {
         case 'spades':
           dealCard(dealType, card.value, '♠');
@@ -253,12 +254,34 @@ const Blackjack = () => {
     } catch (error) {
         console.error('Error al actualizar el balance:', error);
     }
+
+    // Actualizar estadísticas
+    let updatedStats = {
+        gamesPlayed: 1,
+        gamesWon: 0,
+        gamesLost: 1, // Incrementar juegos perdidos
+        totalWagered: bet,
+        totalWon: 0,
+        totalLost: bet, // Se pierde la apuesta
+        lastPrize: 0,
+        bestPrize: 0,
+        highestBet: bet,
+        highestStreak: highestStreak, 
+    };
+
+    try {
+        console.log('Datos a enviar al backend:', updatedStats);
+        await axios.put('/profile/statistics', updatedStats);
+        window.dispatchEvent(new CustomEvent('statisticsUpdated', {
+            detail: updatedStats
+        }));
+    } catch (error) {
+        console.error('Error al actualizar las estadísticas:', error);
+    }
+
     setMessage(Message.bust);
     setButtonState({ hitDisabled: true, standDisabled: true, resetDisabled: false });
 };
-
-const [currentStreak, setCurrentStreak] = useState(0);
-const [highestStreak, setHighestStreak] = useState(0);
 
   const checkWin = async () => {
     let updatedStats = {
@@ -277,7 +300,6 @@ const [highestStreak, setHighestStreak] = useState(0);
     if (userScore > 21) {
         updatedStats.gamesLost = 1;
         updatedStats.totalLost = bet;
-        updatedStats.highestStreak = 0;
         setCurrentStreak(0);
         setMessage(Message.bust);
     } else if (dealerScore > 21 || userScore > dealerScore) {
@@ -330,6 +352,7 @@ const [highestStreak, setHighestStreak] = useState(0);
     }
 
     try {
+        console.log('Datos a enviar al backend:', updatedStats);
         await axios.put('/profile/statistics', updatedStats);
         window.dispatchEvent(new CustomEvent('statisticsUpdated', {
             detail: updatedStats
@@ -360,11 +383,11 @@ return (
         hitEvent={hit}
         standEvent={stand}
         resetEvent={resetGame}
-      />
-      <Hand title={`Dealer's Hand (${dealerScore})`} cards={dealerCards} />
-      <Hand title={`Your Hand (${userScore})`} cards={userCards} />
-    </>
-  );
-};
-
-export default Blackjack;
+        />
+        <Hand title={`Dealer's Hand (${dealerScore})`} cards={dealerCards} />
+        <Hand title={`Your Hand (${userScore})`} cards={userCards} />
+      </>
+    );
+  };
+  
+  export default Blackjack;
