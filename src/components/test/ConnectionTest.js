@@ -33,13 +33,13 @@ const ConnectionTest = () => {
     testConnection();
   }, []);
 
-  return (
+  /*return (
     <div className={`fixed top-32 right-4 p-4 rounded-lg z-50 ${
       connectionStatus.includes('exitosa') ? 'bg-green-500' : 'bg-red-500'
     }`}>
       <p className="text-white">{connectionStatus}</p>
     </div>
-  );
+  );*/
 };
 
 export default ConnectionTest;

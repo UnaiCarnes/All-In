@@ -18,6 +18,7 @@ import VerifyEmail from './pages/VerifyEmail';
 import ConnectionTest from './components/test/ConnectionTest';
 import PrivateRoute from './components/PrivateRoute';
 import { UserProvider } from './context/UserContext';  // Importa el UserProvider
+import Blackjack from './pages/Blackjack/Blackjack';
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="/pokers" element={<Layout><Pokers /></Layout>} />
             <Route path="/blackjacks" element={<Layout><Blackjacks /></Layout>} />
             <Route path="/races" element={<Layout><Races /></Layout>} />
+            <Route path="/blackjack" element={<Layout><Blackjack /></Layout>} />
           </Routes>
         </Router>
       </UserProvider>
