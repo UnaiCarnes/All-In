@@ -33,6 +33,10 @@ const ConnectionTest = () => {
     testConnection();
   }, []);
 
+  if (connectionStatus.includes('exitosa')) {
+    return null;
+  }
+
   return (
     <div className={`fixed top-32 right-4 p-4 rounded-lg z-50 ${
       connectionStatus.includes('exitosa') ? 'bg-green-500' : 'bg-red-500'

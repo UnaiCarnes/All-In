@@ -7,8 +7,3 @@ export const GAMES_LIST = [
   ];
   
   export const INITIAL_BALANCE = 1000;
-  
-  export const BANK_OPTIONS = [
-    { id: 1, bank: 'Banco 1', amount: 500 },
-    { id: 2, bank: 'Banco 2', amount: 1000 },
-  ];

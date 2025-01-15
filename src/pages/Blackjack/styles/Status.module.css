@@ -1,0 +1,75 @@
+.statusContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em 0.5em 0.5em 1em;
+  padding: 1em;
+  width: 60%;
+  background: black;
+  border: 5px solid white;
+  border-radius: 15px;
+  box-shadow: 0px 1px 10px rgb(0, 0, 0);
+}
+
+.value {
+  color: white;
+  text-align: center;
+}
+
+.betContainer {
+  display: flex;
+  align-items: center;
+  margin: 0.5em 1em 0.5em 0.5em;
+  padding: 1em;
+  width: 30%;
+  background: black;
+  border: 5px solid white;
+  border-radius: 15px;
+  box-shadow: 0px 1px 10px rgb(0, 0, 0);
+  color: black;
+}
+
+input {
+  flex-grow: 1;
+  margin-right: 10px;
+  background: white;
+  color: black;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.button {
+  background-color: black;
+  color: #FFEE58;
+  border: none;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.coinImage {
+  width: 25px;
+  height: auto;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 992px) {
+  .value {
+    font-size: 150%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .value {
+    font-size: 115%;
+  }
+}

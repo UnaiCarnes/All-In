@@ -11,12 +11,12 @@ const Header = () => {
 
   useEffect(() => {
     const fetchBalance = async () => {
-      try {
-        const response = await axios.get('/profile');
-        setBalance(response.data.userInfo.balance);
-      } catch (error) {
-        console.error('Error fetching balance:', error);
-      }
+        try {
+            const response = await axios.get('/profile');
+            setBalance(response.data.userInfo.balance);
+        } catch (error) {
+            console.error('Error fetching balance:', error);
+        }
     };
 
     // Obtener balance inicial
@@ -24,15 +24,19 @@ const Header = () => {
 
     // Escuchar eventos de actualización de balance
     const handleBalanceUpdate = (event) => {
-      setBalance(event.detail.balance);
+        setBalance(event.detail.balance);
     };
 
     window.addEventListener('balanceUpdated', handleBalanceUpdate);
 
     return () => {
-      window.removeEventListener('balanceUpdated', handleBalanceUpdate);
+        window.removeEventListener('balanceUpdated', handleBalanceUpdate);
     };
-  }, []);
+}, []);
+
+  useEffect(() => {
+    console.log('Balance actualizado:', balance);
+  }, [balance]);
 
   const handleLogoHover = () => {
     const logo = logoRef.current;
