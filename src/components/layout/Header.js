@@ -1,11 +1,38 @@
-import React, { useRef, useState, useTransition } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import axios from '../../utils/axios';
 
 const Header = () => {
   const {t} = useTranslation();
   const logoRef = useRef(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [balance, setBalance] = useState(0);
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      try {
+        const response = await axios.get('/profile');
+        setBalance(response.data.userInfo.balance);
+      } catch (error) {
+        console.error('Error fetching balance:', error);
+      }
+    };
+
+    // Obtener balance inicial
+    fetchBalance();
+
+    // Escuchar eventos de actualización de balance
+    const handleBalanceUpdate = (event) => {
+      setBalance(event.detail.balance);
+    };
+
+    window.addEventListener('balanceUpdated', handleBalanceUpdate);
+
+    return () => {
+      window.removeEventListener('balanceUpdated', handleBalanceUpdate);
+    };
+  }, []);
 
   const handleLogoHover = () => {
     const logo = logoRef.current;
@@ -64,14 +91,14 @@ const Header = () => {
           </div>
 
           {/* Balance - Mover al extremo derecho */}
-          <div className="absolute right-12 hidden md:block z-10"> {/* Ajuste de espaciado */}
+          <div className="absolute right-12 hidden md:block z-10">
             <Link
               to="/balance"
               className="flex items-center space-x-4 text-yellow-400 hover:text-yellow-300 transform transition-all duration-300 hover:scale-110"
             >
               <span className="text-2xl font-bold">{t("HEADER.Balance")}</span>
               <img src="/img/moneda.png" alt="Coin" className="w-8 h-8" />
-              <span className="text-yellow-400 text-2xl font-bold">1000</span>
+              <span className="text-yellow-400 text-2xl font-bold">{balance}</span>
             </Link>
           </div>
         </div>
@@ -103,7 +130,7 @@ const Header = () => {
                 className="block text-xl text-yellow-400 mb-4"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {t("HEADER.Balance")}: 1000 <img src="/img/moneda.png" alt="Coin" className="w-6 h-6 inline" />
+                {t("HEADER.Balance")}: {balance} <img src="/img/moneda.png" alt="Coin" className="w-6 h-6 inline" />
               </Link>
             </div>
           </div>
