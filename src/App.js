@@ -23,7 +23,7 @@ import Blackjack from './pages/Blackjack/Blackjack';
 const App = () => {
   return (
     <I18nextProvider i18n={i18n}>
-      <UserProvider>  {/* Envolvemos la app con UserProvider */}
+      <UserProvider>
         <Router>
           <ConnectionTest />
           <Routes>

@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://10.14.4.170:8000/api',
+  baseURL: 'http://10.14.4.170:3000/api',
 });
 
 // Interceptar solicitudes para agregar el token dinámicamente

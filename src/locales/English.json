@@ -60,7 +60,8 @@
       "Lista de Usuarios Registrados":"List of Registered Users",
       "Editar":"Edit",
       "Eliminar":"Remove",
-      "Acciones":"Actions"
+      "Acciones":"Actions",
+      "Guardar Cambios":"Save Changes"
     },
     "LOGIN": {
       "Iniciar sesion": "Log In",
@@ -98,7 +99,32 @@
       "Tiradas": "Bets",
       "Total a devolver": "Total to be returned",
       "Costo por tirada(Acumulable)": "Cost per bet (cumulative)",
-      "Seleccionar Préstamo": "Select loan"
+      "Seleccionar Préstamo": "Select loan",
+      "Editar Préstamo": "Edit Loan",
+      "Reactivar Préstamo": "Reactivate Loan",
+      "Préstamo Activo": "Active Loan",
+      "Debes completar las tiradas requeridas": "You must complete the required turns",
+      "Guardar Cambios": "Save Changes",
+      "Cancelar": "Cancel",
+      "Cargando": "Loading",
+      "Gestiona los préstamos disponibles": "Manage available loans",
+      "Ocultar Préstamo":"Hide Loan"
+    },
+    "BLACKJACK": {
+      "¡Haz una apuesta!": "Place a Bet!",
+      "¿Pedir o plantarse?": "Hit or Stand?",
+      "¡Te has pasado!": "Bust!",
+      "¡Has ganado!": "You Win!",
+      "¡El crupier gana!": "Dealer Wins!",
+      "¡Empate!": "Tie!",
+      "Pedir Carta": "Draw a Card",
+      "Plantarse":"Stand",
+      "Reiniciar":"Restart",
+      "Ingresa tu apuesta":"Enter your bet",
+      "Apostar":"Bet",
+      "Mano del Crupier":"Dealer's Hand",
+      "Tu Mano":"Your Hand",
+      "Cargando...": "Loading..."
     }
   }
   

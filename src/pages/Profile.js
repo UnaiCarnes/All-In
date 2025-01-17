@@ -14,6 +14,7 @@ const ProfileSection = ({ title, children, singleColumn }) => {
 };
 
 const StatItem = ({ label, value, isCurrency, onEdit }) => {
+    const { t } = useTranslation();
     return (
         <div className="flex justify-between items-center p-2 bg-[#2d3748] rounded">
             <span className="text-gray-400">{label}</span>
@@ -22,7 +23,7 @@ const StatItem = ({ label, value, isCurrency, onEdit }) => {
             </span>
             {onEdit && (
                 <span onClick={onEdit} className="text-yellow-400 hover:underline cursor-pointer">
-                    {onEdit.isEditing ? 'Guardar' : 'Editar'}
+                    {onEdit.isEditing ? 'Guardar' : t("PROFILE.Editar")}
                 </span>
             )}
         </div>
@@ -56,7 +57,7 @@ const Profile = () => {
                     return;
                 }
 
-                const profileResponse = await axios.get('http://10.14.4.170:8000/api/profile', {
+                const profileResponse = await axios.get('http://10.14.4.170:3000/api/profile', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -67,7 +68,7 @@ const Profile = () => {
                 setEditableName(profileResponse.data.userInfo.name);
 
                 if (profileResponse.data.userInfo.role === 'admin') {
-                    const usersResponse = await axios.get('http://10.14.4.170:8000/api/users', {
+                    const usersResponse = await axios.get('http://10.14.4.170:3000/api/users', {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
@@ -91,7 +92,7 @@ const Profile = () => {
     const handleNameChange = async () => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put('http://10.14.4.170:8000/api/profile', {
+            await axios.put('http://10.14.4.170:3000/api/profile', {
                 name: editableName // Enviar el nuevo nombre al backend
             }, {
                 headers: {
@@ -152,7 +153,7 @@ const Profile = () => {
                             <StatItem label="Email" value={profileData.userInfo.email} />
                             {isEditing ? (
                         <button onClick={handleNameChange} className="mt-4 bg-yellow-500 text-white p-2 rounded">
-                            Guardar Cambios
+                            {t("PROFILE.Guardar Cambios")}
                         </button>
                     ) : null}
                         </ProfileSection>

@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Status from './Status';
 import Controls from './Controls';
 import Hand from './Hand';
+import { useTranslation } from 'react-i18next';
 import jsonData from './deck.json';
 import axios from '../../utils/axios';
 
 const Blackjack = () => {
+
+  const { t } = useTranslation();
+
   const GameState = {
     bet: 'bet',
     init: 'init',
@@ -20,12 +24,12 @@ const Blackjack = () => {
   };
 
   const Message = {
-    bet: 'Place a Bet!',
-    hitStand: 'Hit or Stand?',
-    bust: 'Bust!',
-    userWin: 'You Win!',
-    dealerWin: 'Dealer Wins!',
-    tie: 'Tie!'
+    bet: t('BLACKJACK.¡Haz una apuesta!'),
+    hitStand: t('BLACKJACK.¿Pedir o plantarse?'),
+    bust: t('BLACKJACK.¡Te has pasado!'),
+    userWin: t('BLACKJACK.¡Has ganado!'),
+    dealerWin: t('BLACKJACK.¡El crupier gana!'),
+    tie: t('BLACKJACK.¡Empate!')
   };
   const data = JSON.parse(JSON.stringify(jsonData.cards));
   const [deck, setDeck] = useState(data);
@@ -84,7 +88,6 @@ const Blackjack = () => {
     const fetchBalance = async () => {
       const response = await axios.get('/profile');
       setBalance(response.data.userInfo.balance);
-      console.log('Balance obtenido en Blackjack:', response.data.userInfo.balance);
     };
 
     fetchBalance();
@@ -100,17 +103,17 @@ const Blackjack = () => {
         setMessage(Message.hitStand);
         setButtonState({ hitDisabled: false, standDisabled: false, resetDisabled: true }); 
     }
-}, [gameState, Deal.user, Deal.hidden, Deal.dealer, GameState.userTurn, Message.hitStand, drawCard]);
+  }, [gameState, Deal.user, Deal.hidden, Deal.dealer, GameState.userTurn, Message.hitStand, drawCard]);
 
-    useEffect(() => {
-        calculate(userCards, setUserScore);
-        if (userScore === 21) {
-            setMessage(Message.userWin); // Ganar si es 21
-            setButtonState({ hitDisabled: true, standDisabled: true, resetDisabled: false });
-        } else if (userScore > 21) {
-            bust();
-        }
-    }, [userCards]);
+  useEffect(() => {
+    calculate(userCards, setUserScore);
+    if (userScore === 21) {
+        setMessage(Message.userWin);
+        setButtonState({ hitDisabled: true, standDisabled: true, resetDisabled: false });
+    } else if (userScore > 21) {
+        bust();
+    }
+  }, [userCards, userScore, Message.userWin]);
 
   useEffect(() => {
     calculate(userCards, setUserScore);
@@ -270,7 +273,6 @@ const Blackjack = () => {
     };
 
     try {
-        console.log('Datos a enviar al backend:', updatedStats);
         await axios.put('/profile/statistics', updatedStats);
         window.dispatchEvent(new CustomEvent('statisticsUpdated', {
             detail: updatedStats
@@ -352,7 +354,6 @@ const Blackjack = () => {
     }
 
     try {
-        console.log('Datos a enviar al backend:', updatedStats);
         await axios.put('/profile/statistics', updatedStats);
         window.dispatchEvent(new CustomEvent('statisticsUpdated', {
             detail: updatedStats
@@ -360,6 +361,33 @@ const Blackjack = () => {
     } catch (error) {
         console.error('Error al actualizar las estadísticas:', error);
     }
+};
+
+const [loans, setLoans] = useState([]);
+
+const handleGameEnd = async (gameResult, wagerAmount) => {
+  try {
+    const updateResponse = await axios.post('/api/updateBalance', {
+      gameResult,
+      amount: wagerAmount,
+    });
+    setBalance(updateResponse.data.newBalance);
+
+    const loanResponse = await axios.post('/api/loans/deduct');
+    if (loanResponse.status === 200) {
+      setBalance(loanResponse.data.newBalance);
+      setLoans(loanResponse.data.remainingLoans);
+      if (loanResponse.data.remainingLoans.length === 0) {
+        alert('Todos los préstamos han sido pagados.');
+      } else {
+        alert('Préstamos actualizados. Revisa tu balance y préstamos activos.');
+      }
+    } else {
+      console.error('Error al procesar préstamos:', loanResponse.data.message);
+    }
+  } catch (error) {
+    console.error('Error al finalizar el juego:', error);
+  }
 };
 
 return (
@@ -373,7 +401,7 @@ return (
           resetGame={resetGame} 
         />
       ) : (
-        <div>Cargando...</div>
+        <div>{t('BLACKJACK.Cargando...')}</div>
       )}
       <Controls
         balance={balance}
@@ -384,8 +412,8 @@ return (
         standEvent={stand}
         resetEvent={resetGame}
         />
-        <Hand title={`Dealer's Hand (${dealerScore})`} cards={dealerCards} />
-        <Hand title={`Your Hand (${userScore})`} cards={userCards} />
+        <Hand title={`${t('BLACKJACK.Mano del Crupier')} (${dealerScore})`} cards={dealerCards} />
+        <Hand title={`${t('BLACKJACK.Tu Mano')} (${userScore})`} cards={userCards} />
       </>
     );
   };
