@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const GameCard = ({ title, image }) => {
   return (
-    <Link to="/games" className="game-box">
+    <Link to="/blackjack" className="game-box">
       <div className="relative group overflow-hidden rounded-lg">
         <img 
           src={image} 

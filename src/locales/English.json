@@ -24,7 +24,9 @@
       "Blackjack": "Blackjack",
       "Poker": "Poker",
       "Carrera de caballos": "Horse Racing",
-      "Tragaperras": "Slots"
+      "Tragaperras": "Slots",
+      "Modificar Secciones":"Modify Sections",
+      "Modificar Orden": "Modify Order"
     },
     "PROFILE": {
       "Cargando datos del perfil...":"Loading profile data...",
@@ -54,7 +56,12 @@
       "Consumibles":"Consumables",
       "Bebidas Alcohólicas":"Alcoholic Drinks",
       "Bebidas Hidratantes":"Hydration Drinks",
-      "Sustancias Tóxicas":"Toxic Substances"
+      "Sustancias Tóxicas":"Toxic Substances",
+      "Lista de Usuarios Registrados":"List of Registered Users",
+      "Editar":"Edit",
+      "Eliminar":"Remove",
+      "Acciones":"Actions",
+      "Guardar Cambios":"Save Changes"
     },
     "LOGIN": {
       "Iniciar sesion": "Log In",
@@ -93,13 +100,31 @@
       "Total a devolver": "Total to be returned",
       "Costo por tirada(Acumulable)": "Cost per bet (cumulative)",
       "Seleccionar Préstamo": "Select loan",
-      "Préstamo Activo": "Active loan",
-      "Préstamo concedido exitosamente": "Loan granted successfully",
-      "Cargando...": "Loading...",
-      "Error al procesar el préstamo": "Error processing loan",
-      "Este préstamo ya está activo": "This loan is already active",
-      "Error al cargar préstamos": "Error loading loans",
-      "Debes completar las tiradas requeridas": "You must complete the required bets"
+      "Editar Préstamo": "Edit Loan",
+      "Reactivar Préstamo": "Reactivate Loan",
+      "Préstamo Activo": "Active Loan",
+      "Debes completar las tiradas requeridas": "You must complete the required turns",
+      "Guardar Cambios": "Save Changes",
+      "Cancelar": "Cancel",
+      "Cargando": "Loading",
+      "Gestiona los préstamos disponibles": "Manage available loans",
+      "Ocultar Préstamo":"Hide Loan"
+    },
+    "BLACKJACK": {
+      "¡Haz una apuesta!": "Place a Bet!",
+      "¿Pedir o plantarse?": "Hit or Stand?",
+      "¡Te has pasado!": "Bust!",
+      "¡Has ganado!": "You Win!",
+      "¡El crupier gana!": "Dealer Wins!",
+      "¡Empate!": "Tie!",
+      "Pedir Carta": "Draw a Card",
+      "Plantarse":"Stand",
+      "Reiniciar":"Restart",
+      "Ingresa tu apuesta":"Enter your bet",
+      "Apostar":"Bet",
+      "Mano del Crupier":"Dealer's Hand",
+      "Tu Mano":"Your Hand",
+      "Cargando...": "Loading..."
     }
   }
   

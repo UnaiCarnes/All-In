@@ -1,13 +1,15 @@
 // src/pages/Login.js
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import axios from '../utils/axios';
 import { useTranslation } from 'react-i18next';
+import { UserContext } from '../context/UserContext';
 
 const Login = () => {
   const {t}=useTranslation();
+  const { login } = useContext(UserContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
@@ -26,24 +28,26 @@ const Login = () => {
     e.preventDefault();
     setError('');
     try {
-        const response = await axios.post('/login', formData);
-        
-        if (!response.data.user.email_verified_at) {
-            setError(t('LOGIN.Verifica tu correo electrónico'));
-            return;
-        }
-
-        if (response.data.token) {
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('user', JSON.stringify(response.data.user));
-            navigate('/profile');
-        } else {
-            setError(t('LOGIN.Error al obtener el token'));
-        }
+      const response = await axios.post('/login', formData);
+      if (!response.data.user.email_verified_at) {
+        setError('Por favor, verifica tu correo electrónico antes de iniciar sesión.');
+        return;
+      }
+      // Guardar token y datos del usuario
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      
+      // Actualizar el contexto de usuario
+      login(response.data.user, response.data.token); // Asegúrate de que esta función exista en tu contexto
+  
+      navigate('/profile');
     } catch (err) {
-        setError(err.response?.data?.message || t('LOGIN.Credenciales inválidas'));
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      setError(err.response?.data?.message || 'Credenciales inválidas');
     }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">

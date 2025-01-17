@@ -29,7 +29,6 @@ body {
   background-position: center;
   background-attachment: fixed;
 }
-
 .balance-page html,
 .balance-page body {
   height: 100%;
@@ -65,3 +64,4 @@ body {
 .logo-spinning {
   animation: coinFlip 1s linear;
 }
+

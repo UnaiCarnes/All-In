@@ -7,7 +7,7 @@ const ConnectionTest = () => {
   useEffect(() => {
     const testConnection = async () => {
       try {
-        const url = 'http://10.14.4.170:8000/api/test';
+        const url = 'http://10.14.4.170:3000/api/test';
         console.log('Intentando conectar a:', url);
 
         const response = await axios({
@@ -33,17 +33,13 @@ const ConnectionTest = () => {
     testConnection();
   }, []);
 
-  if (connectionStatus.includes('exitosa')) {
-    return null;
-  }
-
-  return (
+  /*return (
     <div className={`fixed top-32 right-4 p-4 rounded-lg z-50 ${
       connectionStatus.includes('exitosa') ? 'bg-green-500' : 'bg-red-500'
     }`}>
       <p className="text-white">{connectionStatus}</p>
     </div>
-  );
+  );*/
 };
 
 export default ConnectionTest;

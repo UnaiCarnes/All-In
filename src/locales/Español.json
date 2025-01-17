@@ -23,7 +23,9 @@
       "Blackjack": "Blackjack",
       "Poker": "Poker",
       "Carrera de caballos": "Carrera de caballos",
-      "Tragaperras": "Tragaperras"
+      "Tragaperras": "Tragaperras",
+      "Modificar Secciones":"Modificar Secciones",
+      "Modificar Orden": "Modificar Orden"
     },
     "PROFILE": {
       "Cargando datos del perfil...":"Cargando datos del perfil...",
@@ -53,7 +55,12 @@
       "Consumibles":"Consumibles",
       "Bebidas Alcohólicas":"Bebidas Alcohólicas",
       "Bebidas Hidratantes":"Bebidas Hidratantes",
-      "Sustancias Tóxicas":"Sustancias Tóxicas"
+      "Sustancias Tóxicas":"Sustancias Tóxicas",
+      "Lista de Usuarios Registrados":"Lista de Usuarios Registrados",
+      "Editar":"Editar",
+      "Eliminar":"Eliminar",
+      "Acciones":"Acciones",
+      "Guardar Cambios":"Guardar Cambios"
     },
     "LOGIN": {
       "Iniciar sesion": "Iniciar sesión",
@@ -92,13 +99,31 @@
       "Total a devolver": "Total a devolver",
       "Costo por tirada(Acumulable)": "Costo por tirada (Acumulable)",
       "Seleccionar Préstamo": "Seleccionar Préstamo",
+      "Editar Préstamo": "Editar Préstamo",
+      "Reactivar Préstamo": "Reactivar Préstamo",
       "Préstamo Activo": "Préstamo Activo",
-      "Préstamo concedido exitosamente": "Préstamo concedido exitosamente",
-      "Cargando...": "Cargando...",
-      "Error al procesar el préstamo": "Error al procesar el préstamo",
-      "Este préstamo ya está activo": "Este préstamo ya está activo",
-      "Error al cargar préstamos": "Error al cargar préstamos",
-      "Debes completar las tiradas requeridas": "Debes completar las tiradas requeridas"
+      "Debes completar las tiradas requeridas": "Debes completar las tiradas requeridas",
+      "Guardar Cambios": "Guardar Cambios",
+      "Cancelar": "Cancelar",
+      "Cargando": "Cargando",
+      "Gestiona los préstamos disponibles": "Gestiona los préstamos disponibles",
+      "Ocultar Préstamo":"Ocultar Préstamo"
+    },
+    "BLACKJACK": {
+      "¡Haz una apuesta!": "¡Haz una apuesta!",
+      "¿Pedir o plantarse?": "¿Pedir o plantarse?",
+      "¡Te has pasado!": "¡Te has pasado!",
+      "¡Has ganado!": "¡Has ganado!",
+      "¡El crupier gana!": "¡El crupier gana!",
+      "¡Empate!": "¡Empate!",
+      "Pedir Carta": "Pedir Carta",
+      "Plantarse":"Plantarse",
+      "Reiniciar":"Reiniciar",
+      "Ingresa tu apuesta":"Ingresa tu apuesta",
+      "Apostar":"Apostar",
+      "Mano del Crupier":"Mano del Crupier",
+      "Tu Mano":"Tu Mano",
+      "Cargando...": "Cargando..."
     }
   }
   
