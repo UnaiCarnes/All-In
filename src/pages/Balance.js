@@ -174,59 +174,33 @@ const Balance = () => {
 
 
 
-  const handleLoanSelection = async (amount) => {
-    try {
-      // Convierte el amount a número
-      const formattedAmount = parseFloat(amount);
-      if (!amount || isNaN(amount) || amount <= 0) {
-        console.error('Monto no válido');
-        return;
+const handleLoanSelection = async (amount) => {
+  try {
+    const formattedAmount = parseFloat(amount);
+    if (!amount || isNaN(amount) || amount <= 0) {
+      console.error('Monto no válido');
+      return;
     }
-  
-      // Mostrar datos que se enviarán
-      console.log('Datos enviados:', { amount: formattedAmount });
-  
-      // Mostrar URL del endpoint
-      console.log('URL del endpoint:', '/loans/take');
-  
-      // Enviar solicitud al servidor
-      const response = await axios.post('/loans/take', {
-        amount: formattedAmount
-    }, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-  
-      // Actualizar balance global
-      window.dispatchEvent(
-        new CustomEvent('balanceUpdated', {
-          detail: { balance: response.data.newBalance },
-        })
-      );
-  
-      // Marcar el préstamo como activo
-      setActiveLoans((prev) => [...prev, formattedAmount]);
-  
-    } catch (err) {
-      console.error('Error al procesar préstamo:', err);
-  
-      // Mostrar detalles de respuesta del error (si existen)
-      if (err.response) {
-        const { status, data } = err.response;
-        console.error(`Error del servidor: Código ${status}, Detalles:`, data);
-        if (status === 400) {
-            alert(data.message || 'Solicitud incorrecta');
-        }
+
+    const response = await axios.post('/loans/take', { amount: formattedAmount });
+    const newLoan = response.data.loan;
+
+    // Actualizar la lista de préstamos activos en tiempo real
+    setActiveLoans((prevLoans) => [...prevLoans, newLoan]);
+
+    // Emitir evento para actualizar el balance global
+    window.dispatchEvent(
+      new CustomEvent('balanceUpdated', {
+        detail: { balance: response.data.newBalance },
+      })
+    );
+  } catch (err) {
+    console.error('Error al procesar préstamo:', err);
+    if (err.response?.status === 401) {
+      navigate('/login');
     }
-  
-      if (err.response?.status === 401) {
-        navigate('/login');
-      }
-    }
-  };
-  
-  
+  }
+};
   
   
 
@@ -291,22 +265,23 @@ const Balance = () => {
         </p>
         <div className="space-y-4">
         {bankOptions.map((option) => {
-    const isActive = activeLoans.some((loan) => loan.bank_name === option.bank);
-    const isDisabled = isActive; // Opcionalmente desactiva la selección de un préstamo activo.
+  const isActive = activeLoans.some((loan) => loan.bank_name === option.bank);
+  const isDisabled = isActive;
 
-    return (
-        <BankOption
-            key={option.id}
-            {...option}
-            isDisabled={isDisabled}
-            isAdmin={isAdmin}
-            isHidden={option.hidden}
-            onSelect={handleLoanSelection}
-            onEdit={handleEditLoan}
-            onHide={handleHideLoan}
-        />
-    );
+  return (
+    <BankOption
+      key={option.id}
+      {...option}
+      isDisabled={isDisabled}
+      isAdmin={isAdmin}
+      isHidden={option.hidden}
+      onSelect={handleLoanSelection}
+      onEdit={handleEditLoan}
+      onHide={handleHideLoan}
+    />
+  );
 })}
+
 
 
         </div>

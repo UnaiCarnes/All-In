@@ -49,6 +49,8 @@ const Home = () => {
     shuffleGames();
   }, [t]);
 
+  
+
   // Modificar el orden de las secciones
   const handleReorderSections = () => {
     if (sectionsOrder.length > 1) {
@@ -93,6 +95,17 @@ const Home = () => {
 
   if (loading) {
     return <div>Cargando...</div>; // Indicador de carga
+  }
+
+  if (user?.role === 'guest') {
+    return (
+      <div className="space-y-8 px-12 py-8 max-w-[1920px] mx-auto">
+        <h1 className="text-4xl font-bold text-yellow-400 mb-8 text-center">
+          Bienvenido, Invitado
+        </h1>
+        {sectionsOrder.map((sectionKeys) => renderGameSection(sectionKeys))}
+      </div>
+    );
   }
 
   return (
