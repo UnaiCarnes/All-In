@@ -11,9 +11,9 @@ const Slots = () => {
   const [slotOrder, setSlotOrder] = useState([]);
 
   const games = [
-    { id: 2, title: t("MAIN.Tragaperras"), image: '/img/juego2.png' },
-    { id: 6, title: t("MAIN.Tragaperras"), image: '/img/juego6.png' },
-    { id: 9, title: t("MAIN.Tragaperras"), image: '/img/juego9.png' },
+    { id: 2, title: t("MAIN.Tragaperras"), image: '/img/juego2.png',type:"slot", route:"/slot" },
+    { id: 6, title: t("MAIN.Tragaperras"), image: '/img/juego6.png',type:"slot", route:"/slot" },
+    { id: 9, title: t("MAIN.Tragaperras"), image: '/img/juego9.png',type:"slot", route:"/slot" },
   ];
 
   // Cargar el orden inicial desde localStorage o usar el predeterminado
@@ -48,6 +48,7 @@ const Slots = () => {
             key={`slot-${index}`}
             title={game.title}
             image={game.image}
+            route={game.route}
           />
         ))}
       </div>

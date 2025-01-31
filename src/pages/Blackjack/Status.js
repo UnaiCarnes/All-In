@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles/Status.module.css';
+import { useTranslation } from 'react-i18next';
 
 const Status = ({ message, balance, placeBet, resetGame }) => {
   const [amount, setAmount] = useState('');
   const [inputStyle, setInputStyle] = useState(styles.input);
   const [canBet, setCanBet] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (amount > balance) {
@@ -43,7 +45,6 @@ const Status = ({ message, balance, placeBet, resetGame }) => {
     <div className={styles.statusContainer}>
     <div className={styles.status}>
         <h1 className={styles.value}>{message}</h1>
-        <h2 className={styles.balance}>Balance: {balance}</h2>
     </div>
       <div className={styles.betContainer}>
         <h4>
@@ -57,10 +58,10 @@ const Status = ({ message, balance, placeBet, resetGame }) => {
           max={balance}
           step="0.10"
           className={inputStyle}
-          placeholder={`Ingresa tu apuesta`}
+          placeholder={t('BLACKJACK.Ingresa tu apuesta')}
         />
         <button onClick={handleBetClick} className={styles.button} disabled={!canBet}>
-          Apostar
+        {t('BLACKJACK.Apostar')}
         </button>
       </div>
     </div>

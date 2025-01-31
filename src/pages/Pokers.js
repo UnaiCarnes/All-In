@@ -11,8 +11,8 @@ const Pokers = () => {
   const [pokerOrder, setPokerOrder] = useState([]);
 
   const games = [
-    { id: 7, title: t("MAIN.Poker"), image: '/img/juego7.png' },
-    { id: 8, title: t("MAIN.Poker"), image: '/img/juego8.png' },
+    { id: 7, title: t("MAIN.Poker"), image: '/img/juego7.png', type:"poker", route:"/poker" },
+    { id: 8, title: t("MAIN.Poker"), image: '/img/juego8.png', type:"poker", route:"/poker" },
   ];
 
   // Cargar el orden inicial desde localStorage o usar el predeterminado
@@ -46,6 +46,7 @@ const Pokers = () => {
             key={`poker-${index}`}
             title={game.title}
             image={game.image}
+            route={game.route}
           />
         ))}
       </div>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const GameCard = ({ title, image }) => {
+const GameCard = ({ title, image, route }) => {
   return (
-    <Link to="/blackjack" className="game-box">
+    <Link to={route} className="game-box">
       <div className="relative group overflow-hidden rounded-lg">
-        <img 
-          src={image} 
+        <img
+          src={image}
           alt={title}
           className="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-110"
         />
@@ -21,7 +21,8 @@ const GameCard = ({ title, image }) => {
 };
 
 GameCard.defaultProps = {
-  image: '/img/header3.png'
+  image: '/img/header3.png',
+  route: '/blackjack', // Valor por defecto en caso de que no se pase uno
 };
 
 export default GameCard;

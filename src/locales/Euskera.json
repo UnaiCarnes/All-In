@@ -59,7 +59,8 @@
       "Lista de Usuarios Registrados":"Erregistratutako Erabiltzaileen Zerrenda",
       "Editar":"Editatu",
       "Eliminar":"Deuseztatu",
-      "Acciones":"Ekintzak"
+      "Acciones":"Ekintzak",
+      "Guardar Cambios":"Aldaketak Gorde"
     },
     "LOGIN": {
       "Iniciar sesion": "Hasi saioa",
@@ -97,7 +98,33 @@
       "Tiradas": "Tiradak",
       "Total a devolver": "Itzuli beharrekoa guztira",
       "Costo por tirada(Acumulable)": "Tirada bakoitzeko kostua (metagarria)",
-      "Seleccionar Préstamo": "Hautatu Mailegua"
+      "Seleccionar Préstamo": "Hautatu Mailegua",
+      "Editar Préstamo": "Mailegua Editatu",
+      "Reactivar Préstamo": "Mailegua Biraktibatu",
+      "Préstamo Activo": "Aktiboa den Mailegua",
+      "Debes completar las tiradas requeridas": "Betebehar diren tiradak osatu behar dituzu",
+      "Guardar Cambios": "Aldaketak Gorde",
+      "Cancelar": "Ezeztatu",
+      "Cargando": "Kargatzen",
+      "Gestiona los préstamos disponibles": "Kudeatu eskuragarri dauden mailegua",
+      "Ocultar Préstamo":"Mailegua Ezkutatu"
+    }
+    ,
+    "BLACKJACK": {
+      "¡Haz una apuesta!": "Apustu bat egin!",
+      "¿Pedir o plantarse?": "Joan edo gelditu?",
+      "¡Te has pasado!": "Urrutira joan zara!",
+      "¡Has ganado!": "Irabazi duzu!",
+      "¡El crupier gana!": "Croupier irabazi du!",
+      "¡Empate!": "Berdinketa!",
+      "Pedir Carta": "Carta Bat Eskatu",
+      "Plantarse":"Gelditu",
+      "Reiniciar":"Berrezarri",
+      "Ingresa tu apuesta":"Sartu zure apustua",
+      "Apostar":"Apustu",
+      "Mano del Crupier":"Croupier Eskua",
+      "Tu Mano":"Zure Eskua",
+      "Cargando...": "Kargatzen..."
     }
   }
   

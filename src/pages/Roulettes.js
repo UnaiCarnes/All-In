@@ -11,8 +11,8 @@ const Ruletas = () => {
   const [rouletteOrder, setRouletteOrder] = useState([]);
 
   const games = [
-    { id: 1, title: t("MAIN.Ruleta"), image: '/img/juego1.png' },
-    { id: 3, title: t("MAIN.Ruleta"), image: '/img/juego3.png' },
+    { id: 1, title: t("MAIN.Ruleta"), image: '/img/juego1.png', type:"roulette", route:"/roulette" },
+    { id: 3, title: t("MAIN.Ruleta"), image: '/img/juego3.png', type:"roulette", route:"/roulette" },
   ];
 
   // Cargar el orden inicial desde localStorage o usar el predeterminado
@@ -46,6 +46,7 @@ const Ruletas = () => {
             key={`roulette-${index}`}
             title={game.title}
             image={game.image}
+            route={game.route}
           />
         ))}
       </div>

@@ -11,7 +11,7 @@ const Blackjacks = () => {
   const [slotOrder, setSlotOrder] = useState([]);
 
   const games = [
-    { id: 4, title: t("MAIN.Blackjack"), image: '/img/juego4.png' },
+    { id: 4, title: t("MAIN.Blackjack"), image: '/img/juego4.png', type:"blackjack", route:"/blackjack" },
   ];
 
   // Cargar el orden inicial desde localStorage o usar el predeterminado
@@ -47,6 +47,7 @@ const Blackjacks = () => {
             key={`blackjack-${index}`}
             title={game.title}
             image={game.image}
+            route={game.route}
           />
         ))}
       </div>

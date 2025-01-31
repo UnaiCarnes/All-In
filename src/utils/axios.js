@@ -1,16 +1,11 @@
 import axios from 'axios';
 
-const api = axios.create({
-    baseURL: 'http://10.14.4.170:8000/api',
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-    },
-    withCredentials: true,
+const instance = axios.create({
+  baseURL: 'http://10.14.4.170:3000/api',
 });
 
 // Interceptor para añadir el token de autenticación
-api.interceptors.request.use(
+instance.interceptors.request.use(
     async (config) => {
         const token = localStorage.getItem('token');
         if (token) {
@@ -24,7 +19,7 @@ api.interceptors.request.use(
 );
 
 // Interceptor para manejar respuestas
-api.interceptors.response.use(
+instance.interceptors.response.use(
     response => {
         console.log('Response:', response);
         return response;
@@ -39,4 +34,4 @@ api.interceptors.response.use(
     }
 );
 
-export default api;
+export default instance;

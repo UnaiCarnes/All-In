@@ -1,0 +1,35 @@
+.reel {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .placeholder {
+    width: 70px;
+    height: 70px;
+    background-color: #555;
+  }
+  
+  .spinning {
+    animation: spin 1s infinite linear;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(50%);
+    }
+  }
+  

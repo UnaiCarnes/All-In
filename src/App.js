@@ -19,11 +19,12 @@ import ConnectionTest from './components/test/ConnectionTest';
 import PrivateRoute from './components/PrivateRoute';
 import { UserProvider } from './context/UserContext';  // Importa el UserProvider
 import Blackjack from './pages/Blackjack/Blackjack';
+import Slot from './pages/Slot/Slot';
 
 const App = () => {
   return (
     <I18nextProvider i18n={i18n}>
-      <UserProvider>  {/* Envolvemos la app con UserProvider */}
+      <UserProvider>
         <Router>
           <ConnectionTest />
           <Routes>
@@ -45,6 +46,7 @@ const App = () => {
             <Route path="/blackjacks" element={<Layout><Blackjacks /></Layout>} />
             <Route path="/races" element={<Layout><Races /></Layout>} />
             <Route path="/blackjack" element={<Layout><Blackjack /></Layout>} />
+            <Route path="/slot" element={<Layout><Slot /></Layout>} />
           </Routes>
         </Router>
       </UserProvider>

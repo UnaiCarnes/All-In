@@ -11,15 +11,15 @@ const Home = () => {
   const [sectionsOrder, setSectionsOrder] = useState([]);
 
   const games = [
-    { id: 1, title: t("MAIN.Ruleta"), image: '/img/juego1.png' },
-    { id: 2, title: t("MAIN.Tragaperras"), image: '/img/juego2.png' },
-    { id: 3, title: t("MAIN.Ruleta"), image: '/img/juego3.png' },
-    { id: 4, title: t("MAIN.Blackjack"), image: '/img/juego4.png' },
-    { id: 5, title: t("MAIN.Carrera de caballos"), image: '/img/juego5.png' },
-    { id: 6, title: t("MAIN.Tragaperras"), image: '/img/juego6.png' },
-    { id: 7, title: t("MAIN.Poker"), image: '/img/juego7.png' },
-    { id: 8, title: t("MAIN.Poker"), image: '/img/juego8.png' },
-    { id: 9, title: t("MAIN.Tragaperras"), image: '/img/juego9.png' },
+    { id: 1, title: t("MAIN.Ruleta"), image: '/img/juego1.png', type:"roulette", route:"/roulette"},
+    { id: 2, title: t("MAIN.Tragaperras"), image: '/img/juego2.png', type:"slot", route:"/slot" },
+    { id: 3, title: t("MAIN.Ruleta"), image: '/img/juego3.png', type:"roulette", route:"/roulette" },
+    { id: 4, title: t("MAIN.Blackjack"), image: '/img/juego4.png', type:"blackjack", route:"/blackjack" },
+    { id: 5, title: t("MAIN.Carrera de caballos"), image: '/img/juego5.png' , type:"horse", route:"/horse"},
+    { id: 6, title: t("MAIN.Tragaperras"), image: '/img/juego6.png' , type:"slot", route:"/slot"},
+    { id: 7, title: t("MAIN.Poker"), image: '/img/juego7.png', type:"poker", route:"/poker" },
+    { id: 8, title: t("MAIN.Poker"), image: '/img/juego8.png' , type:"poker", route:"/poker"},
+    { id: 9, title: t("MAIN.Tragaperras"), image: '/img/juego9.png' , type:"slot", route:"/slot"},
   ];
 
   // Claves de las secciones para traducción
@@ -74,6 +74,7 @@ const Home = () => {
             key={`${key}-${index}`}
             title={game.title}
             image={game.image}
+            route={game.route}
           />
         ))}
       </div>

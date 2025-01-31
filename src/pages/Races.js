@@ -11,7 +11,7 @@ const Races = () => {
   const [slotOrder, setSlotOrder] = useState([]);
 
   const games = [
-    { id: 5, title: t("MAIN.Carrera de caballos"), image: '/img/juego5.png' },
+    { id: 5, title: t("MAIN.Carrera de caballos"), image: '/img/juego5.png', type:"horse", route:"/horse" },
   ];
 
   // Cargar el orden inicial desde localStorage o usar el predeterminado
@@ -47,6 +47,7 @@ const Races = () => {
             key={`race-${index}`}
             title={game.title}
             image={game.image}
+            route={game.route}
           />
         ))}
       </div>

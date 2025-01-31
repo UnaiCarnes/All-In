@@ -59,7 +59,8 @@
       "Lista de Usuarios Registrados":"Lista de Usuarios Registrados",
       "Editar":"Editar",
       "Eliminar":"Eliminar",
-      "Acciones":"Acciones"
+      "Acciones":"Acciones",
+      "Guardar Cambios":"Guardar Cambios"
     },
     "LOGIN": {
       "Iniciar sesion": "Iniciar sesión",
@@ -97,7 +98,32 @@
       "Tiradas": "Tiradas",
       "Total a devolver": "Total a devolver",
       "Costo por tirada(Acumulable)": "Costo por tirada (Acumulable)",
-      "Seleccionar Préstamo": "Seleccionar Préstamo"
+      "Seleccionar Préstamo": "Seleccionar Préstamo",
+      "Editar Préstamo": "Editar Préstamo",
+      "Reactivar Préstamo": "Reactivar Préstamo",
+      "Préstamo Activo": "Préstamo Activo",
+      "Debes completar las tiradas requeridas": "Debes completar las tiradas requeridas",
+      "Guardar Cambios": "Guardar Cambios",
+      "Cancelar": "Cancelar",
+      "Cargando": "Cargando",
+      "Gestiona los préstamos disponibles": "Gestiona los préstamos disponibles",
+      "Ocultar Préstamo":"Ocultar Préstamo"
+    },
+    "BLACKJACK": {
+      "¡Haz una apuesta!": "¡Haz una apuesta!",
+      "¿Pedir o plantarse?": "¿Pedir o plantarse?",
+      "¡Te has pasado!": "¡Te has pasado!",
+      "¡Has ganado!": "¡Has ganado!",
+      "¡El crupier gana!": "¡El crupier gana!",
+      "¡Empate!": "¡Empate!",
+      "Pedir Carta": "Pedir Carta",
+      "Plantarse":"Plantarse",
+      "Reiniciar":"Reiniciar",
+      "Ingresa tu apuesta":"Ingresa tu apuesta",
+      "Apostar":"Apostar",
+      "Mano del Crupier":"Mano del Crupier",
+      "Tu Mano":"Tu Mano",
+      "Cargando...": "Cargando..."
     }
   }
   
