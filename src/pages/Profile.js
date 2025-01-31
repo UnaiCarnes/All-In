@@ -30,14 +30,6 @@ const StatItem = ({ label, value, isCurrency, onEdit }) => {
     );
 };
 
-const handleEdit = (id) => {
-    console.log(`Editar usuario con ID: ${id}`);
-};
-
-const handleDelete = (id) => {
-    console.log(`Eliminar usuario con ID: ${id}`);
-};
-
 const Profile = () => {
     const { t } = useTranslation();
     const [profileData, setProfileData] = useState(null);
@@ -51,6 +43,7 @@ const Profile = () => {
         const fetchProfileData = async () => {
             try {
                 const token = localStorage.getItem('token');
+                console.log(token);
                 if (!token) {
                     setError("Token no encontrado");
                     setLoading(false);
@@ -64,23 +57,15 @@ const Profile = () => {
                 });
 
                 setProfileData(profileResponse.data);
-
                 setEditableName(profileResponse.data.userInfo.name);
 
                 if (profileResponse.data.userInfo.role === 'admin') {
-                    const usersResponse = await axios.get('http://10.14.4.170:3000/api/users', {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    });
-                    setUsers(usersResponse.data.users);
+                    await fetchUsers(token);
                 }
-
-                setLoading(false);
-
             } catch (err) {
                 console.error(err);
                 setError('Failed to load profile data');
+            } finally {
                 setLoading(false);
             }
         };
@@ -88,6 +73,42 @@ const Profile = () => {
         fetchProfileData();
     }, [t]);
 
+    const fetchUsers = async (token) => {
+        try {
+            const usersResponse = await axios.get('http://10.14.4.170:3000/api/users', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+    
+            setUsers(usersResponse.data.users);
+        } catch (err) {
+            console.error('Error fetching users:', err);
+        }
+    };
+
+    const handleHideUser = async (userId, isDeleted) => {
+        try {
+            const response = await axios.put('/users/hide', { userId, isDeleted: !isDeleted });
+            if (response.status === 200) {
+                // Actualiza el estado de los usuarios localmente
+                setUsers((prevUsers) =>
+                    prevUsers.map((user) => {
+                        if (user.id === userId) {
+                            return { ...user, deleted: !isDeleted };
+                        }
+                        return user;
+                    })
+                );
+            }
+        } catch (err) {
+            console.error('Error al eliminar/recuperar usuario:', err);
+        }
+    };
+
+    const handleEdit = (id) => {
+        console.log(`Editar usuario con ID: ${id}`);
+    };
 
     const handleNameChange = async () => {
         try {
@@ -99,7 +120,6 @@ const Profile = () => {
                     Authorization: `Bearer ${token}`
                 }
             });
-            // Actualizar el estado con el nuevo nombre
             setProfileData(prev => ({
                 ...prev,
                 userInfo: {
@@ -137,25 +157,26 @@ const Profile = () => {
                 {profileData.userInfo.role !== 'admin' && (
                     <>
                         <ProfileSection title={t("PROFILE.Información del usuario")}>
-                            <StatItem  label={t("PROFILE.Nombre")} 
-                        value={isEditing ? (
-                            <input 
-                                type="text" 
-                                value={editableName} 
-                                onChange={(e) => setEditableName(e.target.value)} 
-                                className="bg-[#2d3748] text-white border border-gray-600 rounded p-1"
+                            <StatItem
+                                label={t("PROFILE.Nombre")}
+                                value={isEditing ? (
+                                    <input
+                                        type="text"
+                                        value={editableName}
+                                        onChange={(e) => setEditableName(e.target.value)}
+                                        className="bg-[#2d3748] text-white border border-gray-600 rounded p-1"
+                                    />
+                                ) : editableName}
+                                onEdit={() => setIsEditing(!isEditing)} // Cambiar entre editar y guardar
                             />
-                        ) : editableName} 
-                        onEdit={() => setIsEditing(!isEditing)} // Cambiar entre editar y guardar
-                    />
                             <StatItem label={t("PROFILE.ID del jugador")} value={profileData.userInfo.playerId} />
                             <StatItem label={t("PROFILE.Balance disponible")} value={profileData.userInfo.balance} isCurrency />
                             <StatItem label="Email" value={profileData.userInfo.email} />
                             {isEditing ? (
-                        <button onClick={handleNameChange} className="mt-4 bg-yellow-500 text-white p-2 rounded">
-                            {t("PROFILE.Guardar Cambios")}
-                        </button>
-                    ) : null}
+                                <button onClick={handleNameChange} className="mt-4 bg-yellow-500 text-white p-2 rounded">
+                                    {t("PROFILE.Guardar Cambios")}
+                                </button>
+                            ) : null}
                         </ProfileSection>
 
                         <ProfileSection title={t("PROFILE.Estadísticas de juego")}>
@@ -211,10 +232,16 @@ const Profile = () => {
                                                 {t("PROFILE.Editar")}
                                             </button>
                                             <button
-                                                className="bg-red-500 text-white px-4 py-2 rounded"
-                                                onClick={() => handleDelete(user.id)}
+                                                className={`${
+                                                    user.deleted ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'
+                                                } text-white font-bold py-2 px-4 rounded`}
+                                                onClick={() => {
+                                                    console.log('Estado del usuario antes de la acción:', user); // Log del objeto completo
+                                                    console.log('Estado del usuario antes de la acción (deleted):', user.deleted); // Log específico de deleted
+                                                    handleHideUser(user.id, user.deleted);
+                                                }}
                                             >
-                                                {t("PROFILE.Eliminar")}
+                                                {user.deleted ? 'Recuperar' : 'Eliminar'}
                                             </button>
                                         </div>
                                     </div>
