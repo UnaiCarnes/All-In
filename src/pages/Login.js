@@ -26,6 +26,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     try {
       const response = await axios.post('/login', formData);
       if (!response.data.user.email_verified_at) {

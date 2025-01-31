@@ -1,13 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from '../../utils/axios';
 
 const Header = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const logoRef = useRef(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [balance, setBalance] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBalance = async () => {
@@ -16,11 +17,19 @@ const Header = () => {
         setBalance(response.data.userInfo.balance);
       } catch (error) {
         console.error('Error fetching balance:', error);
+        if (error.response && error.response.status === 401) {
+          navigate('/login');
+        }
       }
     };
 
-    // Obtener balance inicial
-    fetchBalance();
+    // Verificar si el usuario está autenticado
+    const isAuthenticated = !!localStorage.getItem('token');
+    if (isAuthenticated) {
+      fetchBalance();
+    } else {
+      setBalance(0);
+    }
 
     // Escuchar eventos de actualización de balance
     const handleBalanceUpdate = (event) => {
@@ -32,7 +41,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('balanceUpdated', handleBalanceUpdate);
     };
-  }, []);
+  }, [navigate]);
 
   const handleLogoHover = () => {
     const logo = logoRef.current;

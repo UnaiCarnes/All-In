@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import axios from '../utils/axios';
 import { UserContext } from '../context/UserContext';
 
-
 const BankOption = ({
       bank,
       amount,
@@ -24,12 +23,10 @@ const BankOption = ({
       const [newAmount, setNewAmount] = useState(amount);
       const [showEditForm, setShowEditForm] = useState(false);
 
-
       const handleEditSubmit = () => {
         onEdit(bank, newAmount); // Enviar valores al handler
         setShowEditForm(false); // Cerrar formulario después de enviar
       };
-
 
       return (
         <div className={`p-4 rounded-lg ${isDisabled ? 'bg-gray-800' : 'bg-gray-700'}`}>
@@ -49,7 +46,6 @@ const BankOption = ({
               </span>
             )}
           </p>
-
 
           {showDetails && !isDisabled && !isAdmin && (
             <div className="mt-2 text-sm text-gray-300 max-h-40 overflow-y-auto">
@@ -76,7 +72,6 @@ const BankOption = ({
             </div>
           )}
 
-
           {isAdmin ? (
             <div className="mt-4 grid grid-cols-2 gap-2">
               <Button
@@ -86,13 +81,13 @@ const BankOption = ({
                 {t('BALANCE.Editar Préstamo')}
               </Button>
               <Button
-      className={`${
-        isHidden ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'
-      } text-white font-bold py-2 px-4 rounded`}
-      onClick={() => onHide(bank)}
-    >
-      {isHidden ? t('BALANCE.Reactivar Préstamo') : t('BALANCE.Ocultar Préstamo')}
-    </Button>
+                className={`${
+                  isHidden ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'
+                } text-white font-bold py-2 px-4 rounded`}
+                onClick={() => onHide(bank)}
+              >
+                {isHidden ? t('BALANCE.Reactivar Préstamo') : t('BALANCE.Ocultar Préstamo')}
+              </Button>
             </div>
           ) : isDisabled ? (
             <div className="mt-4">
@@ -111,7 +106,6 @@ const BankOption = ({
               {t('BALANCE.Seleccionar Préstamo')}
             </Button>
           )}
-
 
           {showEditForm && (
             <div className="mt-4">
@@ -142,7 +136,6 @@ const BankOption = ({
       );
     };
 
-
     const Balance = () => {
       const { t } = useTranslation();
       const navigate = useNavigate();
@@ -152,9 +145,7 @@ const BankOption = ({
       const [hiddenLoans, setHiddenLoans] = useState([]);
       const [loading, setLoading] = useState(true);
 
-
       const isAdmin = user?.role === 'admin';
-
 
       useEffect(() => {
         const fetchLoansData = async () => {
@@ -164,11 +155,9 @@ const BankOption = ({
                     axios.get('/loans/active'),
                 ]);
 
-
                 if (optionsResponse.status === 200) {
                     setBankOptions(optionsResponse.data.bankOptions);
                 }
-
 
                 if (activeLoansResponse.status === 200) {
                     setActiveLoans(activeLoansResponse.data.activeLoans);
@@ -179,7 +168,6 @@ const BankOption = ({
                 setLoading(false);
             }
         };
-
 
         fetchLoansData();
     }, []);
@@ -192,14 +180,11 @@ const BankOption = ({
           return;
         }
 
-
         const response = await axios.post('/loans/take', { amount: formattedAmount });
         const newLoan = response.data.loan;
 
-
         // Actualizar la lista de préstamos activos en tiempo real
         setActiveLoans((prevLoans) => [...prevLoans, newLoan]);
-
 
         // Emitir evento para actualizar el balance global
         window.dispatchEvent(
@@ -214,7 +199,10 @@ const BankOption = ({
         }
       }
     };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 781bd933d506b279a4fd6dd103d0c2a24481470c
 
       const handleEditLoan = async (bank, newAmount) => {
         try {
@@ -231,7 +219,6 @@ const BankOption = ({
         }
       };
 
-
       const handleHideLoan = async (bank) => {
         try {
           const response = await axios.put('/loans/hide', { bank });
@@ -247,8 +234,6 @@ const BankOption = ({
         }
       };
     
-
-
       const handleReactivateLoan = async (bank, amount) => {
         try {
           const response = await axios.post('/loans/reactivate', { bank, amount });
@@ -260,11 +245,9 @@ const BankOption = ({
         }
       };
 
-
       if (loading) {
         return <div className="text-center p-4">{t('BALANCE.Cargando...')}</div>;
       }
-
 
       return (
         <div className="balance-page">
@@ -283,7 +266,6 @@ const BankOption = ({
             {bankOptions.map((option) => {
       const isActive = activeLoans.some((loan) => loan.bank_name === option.bank);
       const isDisabled = isActive;
-
 
       return (
         <BankOption

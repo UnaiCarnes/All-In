@@ -36,11 +36,6 @@ const Sidebar = () => {
     { name: 'TikTok', icon: '/img/tik-tok.svg', url: 'https://www.tiktok.com/@all_in.official' }
   ];
 
-  // Para depuración: observar cambios en `user`
-  useEffect(() => {
-    console.log("User state in Sidebar:", user);
-  }, [user]);
-
   return (
     <aside className="fixed left-0 top-28 w-52 h-[calc(100vh-7rem)] bg-gray-800 p-5 flex flex-col">
       {/* Games List */}
