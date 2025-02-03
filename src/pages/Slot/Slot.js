@@ -70,36 +70,42 @@ const SlotMachine = () => {
   };
 
   const updateGlobalStats = async (win) => {
-    const updatedStats = {
-      totalSpins: gameStats.totalSpins + 1,
-      wins: win ? gameStats.wins + 1 : gameStats.wins,
-      losses: win ? gameStats.losses : gameStats.losses + 1,
-      streak: win ? gameStats.streak + 1 : 0,
-    };
+    setGameStats((prevStats) => {
+        const updatedStats = {
+            totalSpins: prevStats.totalSpins + 1,
+            wins: win ? prevStats.wins + 1 : prevStats.wins,
+            losses: win ? prevStats.losses : prevStats.losses + 1,
+            streak: win ? prevStats.streak + 1 : 0, // Reinicia la racha si hay una derrota
+        };
 
-    setGameStats(updatedStats);
+        // Aquí puedes hacer la llamada a la API para actualizar las estadísticas
+        updateStatisticsAPI(updatedStats);
 
-    try {
-      const response = await axios.put('/profile/statistics', {
-        gamesPlayed: updatedStats.totalSpins,
-        gamesWon: updatedStats.wins,
-        gamesLost: updatedStats.losses,
-        totalWagered: parseFloat(amount),
-        totalWon: win ? parseFloat(amount) * 3 : 0,
-        totalLost: win ? 0 : parseFloat(amount),
-        lastPrize: win ? parseFloat(amount) * 3 : 0,
-        bestPrize: Math.max(gameStats.bestPrize || 0, win ? parseFloat(amount) * 3 : 0),
-        highestBet: Math.max(gameStats.highestBet || 0, parseFloat(amount)),
-        highestStreak: win ? gameStats.streak + 1 : 0,
-      });
-      
+        return updatedStats; // Devuelve el nuevo estado
+    });
+};
 
-      if (response.status === 200) {
-        console.log('Estadísticas actualizadas correctamente.');
+  const updateStatisticsAPI = async (updatedStats) => {
+      try {
+          const response = await axios.put('/profile/statistics', {
+            gamesPlayed: 1, // Siempre es 1 porque se jugó una partida
+            gamesWon: updatedStats.wins > gameStats.wins ? 1 : 0, // Solo suma 1 si hay victoria
+            gamesLost: updatedStats.losses > gameStats.losses ? 1 : 0, // Solo suma 1 si hay derrota
+              totalWagered: parseFloat(amount),
+              totalWon: updatedStats.wins > 0 ? parseFloat(amount) * 3 : 0,
+              totalLost: updatedStats.losses > 0 ? parseFloat(amount) : 0,
+              lastPrize: updatedStats.wins > 0 ? parseFloat(amount) * 3 : 0,
+              bestPrize: Math.max(gameStats.bestPrize || 0, updatedStats.wins > 0 ? parseFloat(amount) * 3 : 0),
+              highestBet: Math.max(gameStats.highestBet || 0, parseFloat(amount)),
+              highestStreak: updatedStats.streak,
+          });
+
+          if (response.status === 200) {
+              console.log('Estadísticas actualizadas correctamente.');
+          }
+      } catch (error) {
+          console.error('Error al actualizar las estadísticas:', error);
       }
-    } catch (error) {
-      console.error('Error al actualizar las estadísticas:', error);
-    }
   };
 
   const updateBalance = async (newBalance) => {

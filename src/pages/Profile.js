@@ -43,7 +43,6 @@ const Profile = () => {
         const fetchProfileData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                console.log(token);
                 if (!token) {
                     setError("Token no encontrado");
                     setLoading(false);
@@ -104,10 +103,6 @@ const Profile = () => {
         } catch (err) {
             console.error('Error al eliminar/recuperar usuario:', err);
         }
-    };
-
-    const handleEdit = (id) => {
-        console.log(`Editar usuario con ID: ${id}`);
     };
 
     const handleNameChange = async () => {
@@ -225,12 +220,6 @@ const Profile = () => {
                                         <div className="text-center">{user.id}</div>
                                         <div className="text-center truncate">{user.email}</div>
                                         <div className="flex justify-center space-x-2">
-                                            <button
-                                                className="bg-blue-500 text-white px-4 py-2 rounded"
-                                                onClick={() => handleEdit(user.id)}
-                                            >
-                                                {t("PROFILE.Editar")}
-                                            </button>
                                             <button
                                                 className={`${
                                                     user.deleted ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'

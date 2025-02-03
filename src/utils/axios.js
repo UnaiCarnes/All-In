@@ -21,7 +21,6 @@ instance.interceptors.request.use(
 // Interceptor para manejar respuestas
 instance.interceptors.response.use(
     response => {
-        console.log('Response:', response);
         return response;
     },
     error => {

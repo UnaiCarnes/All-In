@@ -199,10 +199,6 @@ const BankOption = ({
         }
       }
     };
-<<<<<<< HEAD
-
-=======
->>>>>>> 781bd933d506b279a4fd6dd103d0c2a24481470c
 
       const handleEditLoan = async (bank, newAmount) => {
         try {
