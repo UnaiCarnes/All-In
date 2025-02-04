@@ -17,9 +17,10 @@ import Register from './pages/Register';
 import VerifyEmail from './pages/VerifyEmail';
 import ConnectionTest from './components/test/ConnectionTest';
 import PrivateRoute from './components/PrivateRoute';
-import { UserProvider } from './context/UserContext';  // Importa el UserProvider
+import { UserProvider } from './context/UserContext';
 import Blackjack from './pages/Blackjack/Blackjack';
 import Slot from './pages/Slot/Slot';
+import Roulette from './pages/Roulette/Roulette';
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
             <Route path="/" element={<Layout><Home /></Layout>} />
             <Route path="/games" element={<Layout><Games /></Layout>} />
             <Route path="/roulettes" element={<Layout><Roulettes /></Layout>} />
+            <Route path="/roulette" element={<Layout><Roulette /></Layout>} />
             <Route path="/slots" element={<Layout><Slots /></Layout>} />
             <Route path="/pokers" element={<Layout><Pokers /></Layout>} />
             <Route path="/blackjacks" element={<Layout><Blackjacks /></Layout>} />

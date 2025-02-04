@@ -1,38 +1,43 @@
+// src/pages/Roulettes.js
 import React, { useState, useEffect, useContext } from 'react';
 import GameCard from '../components/ui/GameCard';
 import { useTranslation } from 'react-i18next';
 import { UserContext } from '../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const Ruletas = () => {
   const { t } = useTranslation();
-  const { user, loading } = useContext(UserContext); // Obtenemos usuario y estado de carga
+  const { user, loading } = useContext(UserContext);
+  const navigate = useNavigate(); // Inicializar useNavigate
   console.log("User Context Data:", { user, loading });
 
   const [rouletteOrder, setRouletteOrder] = useState([]);
 
   const games = [
-    { id: 1, title: t("MAIN.Ruleta"), image: '/img/juego1.png', type:"roulette", route:"/roulette" },
-    { id: 3, title: t("MAIN.Ruleta"), image: '/img/juego3.png', type:"roulette", route:"/roulette" },
+    { id: 1, title: t("MAIN.Ruleta"), image: '/img/juego1.png', type: "roulette", route: "/roulette" },
+    { id: 3, title: t("MAIN.Ruleta"), image: '/img/juego3.png', type: "roulette", route: "/roulette" },
   ];
 
-  // Cargar el orden inicial desde localStorage o usar el predeterminado
   useEffect(() => {
     const savedOrder = localStorage.getItem('rouletteOrder');
     if (savedOrder) {
       setRouletteOrder(JSON.parse(savedOrder));
     } else {
-      setRouletteOrder(games); // Orden predeterminado
+      setRouletteOrder(games);
     }
-  }, [t]); // Dependemos de `t` para asegurar que las traducciones estén listas
+  }, [t]);
 
-  // Función para cambiar el orden de las ruletas
   const handleReorderRoulettes = () => {
     const newOrder = [
-      rouletteOrder[1], // El segundo pasa a ser el primero
-      rouletteOrder[0], // El primero pasa a ser el último
+      rouletteOrder[1],
+      rouletteOrder[0],
     ];
     setRouletteOrder(newOrder);
-    localStorage.setItem('rouletteOrder', JSON.stringify(newOrder)); // Guardar el nuevo orden en localStorage
+    localStorage.setItem('rouletteOrder', JSON.stringify(newOrder));
+  };
+
+  const handleGameClick = (route) => {
+    navigate(route); // Redirigir a la ruta de la ruleta
   };
 
   const renderGameSection = () => (
@@ -42,12 +47,13 @@ const Ruletas = () => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
         {rouletteOrder.map((game, index) => (
-          <GameCard
-            key={`roulette-${index}`}
-            title={game.title}
-            image={game.image}
-            route={game.route}
-          />
+          <div key={`roulette-${index}`} onClick={() => handleGameClick(game.route)}> {/* Añadir el manejador de clic */}
+            <GameCard
+              title={game.title}
+              image={game.image}
+              route={game.route}
+            />
+          </div>
         ))}
       </div>
     </section>
@@ -67,7 +73,7 @@ const Ruletas = () => {
   );
 
   if (loading) {
-    return <div>Cargando...</div>; // Indicador de carga
+    return <div>Cargando...</div>;
   }
 
   return (
@@ -79,7 +85,7 @@ const Ruletas = () => {
         backgroundPosition: 'center',
       }}
     >
-      {user?.role === 'admin' && renderAdminTools()} {/* Solo visible para admins */}
+      {user?.role === 'admin' && renderAdminTools()}
       {renderGameSection()}
     </div>
   );
