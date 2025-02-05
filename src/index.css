@@ -5,9 +5,63 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1a202c;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.game-box {
+  background: #2d3748;
+  border: 1px solid #4a5568;
+  transition: all 0.3s ease;
 }
+
+.game-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.balance-page {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../public/img/fondo5.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.balance-page html,
+.balance-page body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.balance-page .max-w-lg {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.balance-page img {
+  object-fit: contain;
+  max-width: 100%;
+}
+
+@keyframes coinFlip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.logo-spin {
+  transform-style: preserve-3d;
+}
+
+.logo-spinning {
+  animation: coinFlip 1s linear;
+}
+

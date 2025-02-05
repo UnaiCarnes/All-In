@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './App'; // Corregido el nombre del archivo para que coincida con el caso correcto
 import reportWebVitals from './reportWebVitals';
+import "./config/i18n";
+import { UserProvider } from './context/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </React.StrictMode>
 );
 
