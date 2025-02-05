@@ -18,8 +18,15 @@ const StatItem = ({ label, value, isCurrency, onEdit }) => {
     return (
         <div className="flex justify-between items-center p-2 bg-[#2d3748] rounded">
             <span className="text-gray-400">{label}</span>
-            <span className="text-white font-medium">
-                {isCurrency ? `$${Number(value).toLocaleString('en-US', { minimumFractionDigits: 2 })}` : value}
+            <span className="text-white font-medium flex items-center">
+                {isCurrency ? (
+                    <>
+                        <img src="/img/moneda.png" alt="moneda" className="w-4 h-4 mr-1" />
+                        {Number(value).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                    </>
+                ) : (
+                    value
+                )}
             </span>
             {onEdit && (
                 <span onClick={onEdit} className="text-yellow-400 hover:underline cursor-pointer">
