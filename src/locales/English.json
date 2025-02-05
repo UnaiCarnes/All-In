@@ -125,6 +125,16 @@
       "Mano del Crupier":"Dealer's Hand",
       "Tu Mano":"Your Hand",
       "Cargando...": "Loading..."
+    },
+    "SLOTS": {
+      "Tragaperras": "Slot",
+      "Multiplicador": "Multiplier x",
+      "Multiplicadores de las imágenes": "Image multipliers",
+      "¡No hubo suerte esta vez!": "No luck this time! 😢",
+      "¡Ganaste": "You won {{totalWinAmount}} pambicoins with a total multiplier of x{{totalMultiplier}}! 🎉",
+      "Ingrese su apuesta": "Enter your bet",
+      "Apostar": "Bet",
+      "Girando...": "Spinning..."
     }
   }
   

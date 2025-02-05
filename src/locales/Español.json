@@ -124,6 +124,16 @@
       "Mano del Crupier":"Mano del Crupier",
       "Tu Mano":"Tu Mano",
       "Cargando...": "Cargando..."
+    },
+    "SLOTS": {
+      "Tragaperras": "Tragaperras",
+      "Multiplicador": "Multiplicador x",
+      "Multiplicadores de las imágenes": "Multiplicadores de las imágenes",
+      "¡No hubo suerte esta vez!": "¡No hubo suerte esta vez! 😢",
+      "¡Ganaste": "¡Ganaste {{totalWinAmount}} pambicoins con un multiplicador total de x{{totalMultiplier}}! 🎉",
+      "Ingrese su apuesta": "Ingrese su apuesta",
+      "Apostar": "Apostar",
+      "Girando...": "Girando..."
     }
   }
   

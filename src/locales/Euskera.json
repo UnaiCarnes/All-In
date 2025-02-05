@@ -125,6 +125,16 @@
       "Mano del Crupier":"Croupier Eskua",
       "Tu Mano":"Zure Eskua",
       "Cargando...": "Kargatzen..."
+    },
+   "SLOTS": {
+      "Tragaperras": "Txanpon-makina",
+      "Multiplicador": "Biderkatzailea x",
+      "Multiplicadores de las imágenes": "Irudi biderkatzaileak",
+      "¡No hubo suerte esta vez!": "Sorterik ez oraingoan! 😢",
+      "¡Ganaste": "Irabazi duzu {{totalWinAmount}} pambicoinak biderkatzaile batekin x{{totalMultiplier}}! 🎉",
+      "Ingrese su apuesta": "Sartu zure apustua",
+      "Apostar": "Apustu egin",
+      "Girando...": "Biraka..."
     }
   }
   

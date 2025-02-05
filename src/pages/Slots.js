@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import GameCard from '../components/ui/GameCard';
 import { useTranslation } from 'react-i18next';
 import { UserContext } from '../context/UserContext';
+import Slot from '../pages/Slot/Slot'
 
 const Slots = () => {
   const { t } = useTranslation();
@@ -16,15 +17,22 @@ const Slots = () => {
     { id: 9, title: t("MAIN.Tragaperras"), image: '/img/juego9.png',type:"slot", route:"/slot" },
   ];
 
-  // Cargar el orden inicial desde localStorage o usar el predeterminado
   useEffect(() => {
     const savedOrder = localStorage.getItem('slotOrder');
     if (savedOrder) {
-      setSlotOrder(JSON.parse(savedOrder));
+      const parsedOrder = JSON.parse(savedOrder);
+  
+      // 🔥 Asegurar que cada juego tiene una ruta
+      const restoredOrder = parsedOrder.map((game) => ({
+        ...game,
+        route: game.route || "/slot", // Si `route` está vacío, asignamos "/slot"
+      }));
+  
+      setSlotOrder(restoredOrder);
     } else {
       setSlotOrder(games); // Orden predeterminado
     }
-  }, [t]); // Dependemos de `t` para asegurar que las traducciones estén listas
+  }, [t]);
 
   // Función para cambiar el orden de las imágenes
   const handleReorderSlots = () => {

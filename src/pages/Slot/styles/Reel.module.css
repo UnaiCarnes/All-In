@@ -1,35 +1,59 @@
 .reel {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #333;
-    border-radius: 5px;
-    overflow: hidden;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.icon {
+  width: 120px;
+  height: 120px;
+  transition: transform 0.5s ease-out;
+}
+
+.placeholder {
+  width: 70px;
+  height: 70px;
+  background-color: #555;
+}
+
+.spinning {
+  animation: spin 0.1s linear infinite;
+  filter: blur(3px);
+}
+
+.winning {
+  border: 3px solid #4caf50;
+  border-radius: 5px;
+}
+
+
+@keyframes spin {
+  0% {
+    transform: translateY(0);
   }
-  
-  .icon {
-    width: 70px;
-    height: 70px;
+  100% {
+    transform: translateY(100px);
   }
-  
-  .placeholder {
-    width: 70px;
-    height: 70px;
-    background-color: #555;
+}
+
+.stopping {
+  animation: stopSpin 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  filter: blur(0);
+}
+
+@keyframes stopSpin {
+  0% {
+    transform: translateY(100px);
+    filter: blur(3px);
   }
-  
-  .spinning {
-    animation: spin 1s infinite linear;
+  100% {
+    transform: translateY(0);
+    filter: blur(0);
   }
-  
-  @keyframes spin {
-    0% {
-      transform: translateY(-50%);
-    }
-    100% {
-      transform: translateY(50%);
-    }
-  }
-  
+}

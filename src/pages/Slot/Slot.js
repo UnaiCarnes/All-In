@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import confetti from 'canvas-confetti';
+import {useWindowSize} from 'react-use';
 import styles from './styles/SlotMachine.module.css';
 import Reel from './Spinner';
 import { useTranslation } from 'react-i18next';
@@ -6,6 +8,8 @@ import axios from '../../utils/axios';
 
 const SlotMachine = () => {
   const [grid, setGrid] = useState([]);
+  const [winningPositions, setWinningPositions] = useState([]);
+  const { width, height } = useWindowSize();
   const [spinning, setSpinning] = useState(false);
   const [message, setMessage] = useState('');
   const [balance, setBalance] = useState(0);
@@ -20,16 +24,43 @@ const SlotMachine = () => {
   const { t } = useTranslation();
 
   const images = [
-    { src: '/img/slots-icons/billete.png', value: 1 },
-    { src: '/img/slots-icons/cerveza.png', value: 5 },
-    { src: '/img/slots-icons/cofre.png', value: 2 },
-    { src: '/img/slots-icons/cristal.png', value: 3 },
-    { src: '/img/slots-icons/durum.png', value: 4 },
-    { src: '/img/slots-icons/llave.png', value: 6 },
-    { src: '/img/slots-icons/moneda.png', value: 7 },
-    { src: '/img/slots-icons/pocion.png', value: 8 },
-    { src: '/img/slots-icons/pollo.png', value: 9 },
+    { src: '/img/slots-icons/pollo.png', value: 1, multiplier: 2, probability: 0.25 },
+    { src: '/img/slots-icons/billete.png', value: 2, multiplier: 3, probability: 0.17 },
+    { src: '/img/slots-icons/pocion.png', value: 3, multiplier: 4, probability: 0.14 },
+    { src: '/img/slots-icons/cristal.png', value: 4, multiplier: 5, probability: 0.12 },
+    { src: '/img/slots-icons/llave.png', value: 5, multiplier: 6, probability: 0.1 },
+    { src: '/img/slots-icons/cofre.png', value: 6, multiplier: 7, probability: 0.08 },
+    { src: '/img/slots-icons/cerveza.png', value: 7, multiplier: 8, probability: 0.06 },
+    { src: '/img/slots-icons/durum.png', value: 8, multiplier: 9, probability: 0.05 },
+    { src: '/img/slots-icons/moneda.png', value: 9, multiplier: 10, probability: 0.03 },
   ];
+
+  const triggerConfetti = () => {
+    // Configuración para disparar confetti desde las esquinas
+    const duration = 2 * 1000; // 2 segundos
+    const end = Date.now() + duration;
+
+    // Función para disparar desde las esquinas
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 1 }, // Esquina inferior izquierda
+      });
+
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 1 }, // Esquina inferior derecha
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  };
 
   useEffect(() => {
     const fetchBalanceAndStats = async () => {
@@ -46,13 +77,28 @@ const SlotMachine = () => {
     fetchBalanceAndStats();
   }, []);
 
+  const getRandomImage = () => {
+    const random = Math.random();
+    let cumulativeProbability = 0;
+
+    for (const image of images) {
+      cumulativeProbability += image.probability;
+      if (random < cumulativeProbability) {
+        return image;
+      }
+    }
+
+    // Por defecto, devuelve la última imagen.
+    return images[images.length - 1];
+  };
+
   const initializeGrid = () => {
     const initialGrid = Array(3)
       .fill(null)
       .map(() =>
         Array(3)
           .fill(null)
-          .map(() => images[Math.floor(Math.random() * images.length)])
+          .map(() => getRandomImage())
       );
     setGrid(initialGrid);
   };
@@ -138,7 +184,7 @@ const SlotMachine = () => {
       .map(() =>
         Array(3)
           .fill(null)
-          .map(() => images[Math.floor(Math.random() * images.length)])
+          .map(() => getRandomImage())
       );
 
     setTimeout(() => {
@@ -150,70 +196,132 @@ const SlotMachine = () => {
 
   const checkWin = (grid) => {
     const winningCombinations = [
-      [[0, 0], [0, 1], [0, 2]],
-      [[1, 0], [1, 1], [1, 2]],
-      [[2, 0], [2, 1], [2, 2]],
-      [[0, 0], [1, 1], [2, 2]],
-      [[0, 2], [1, 1], [2, 0]],
-      [[0, 0], [1, 0], [2, 0]],
-      [[0, 1], [1, 1], [2, 1]],
-      [[0, 2], [1, 2], [2, 2]],
+      [[0, 0], [0, 1], [0, 2]], // Horizontal 1
+      [[1, 0], [1, 1], [1, 2]], // Horizontal 2
+      [[2, 0], [2, 1], [2, 2]], // Horizontal 3
+      [[0, 0], [1, 0], [2, 0]], // Vertical 1
+      [[0, 1], [1, 1], [2, 1]], // Vertical 2
+      [[0, 2], [1, 2], [2, 2]], // Vertical 3
+      [[0, 0], [1, 1], [2, 2]], // Diagonal 1
+      [[0, 2], [1, 1], [2, 0]], // Diagonal 2
     ];
-
+  
+    let totalWinAmount = 0;
+    let totalMultiplier = 0;
+    const allWinningPositions = [];
+  
+    // Map para contar ocurrencias de cada símbolo
+    const symbolCounts = {};
+  
     for (let combination of winningCombinations) {
       const [a, b, c] = combination;
       if (
         grid[a[0]][a[1]].value === grid[b[0]][b[1]].value &&
         grid[a[0]][a[1]].value === grid[c[0]][c[1]].value
       ) {
-        const winAmount = amount * 3;
-        const newBalance = balance + winAmount;
-        setMessage(`¡Ganaste ${winAmount} pambicoins! 🎉`);
-        updateBalanceDisplay(newBalance);
-        updateGlobalStats(true);
-        return;
+        const winningImage = grid[a[0]][a[1]];
+        const multiplier = winningImage.multiplier;
+  
+        // Sumar el multiplicador de la combinación actual
+        totalMultiplier += multiplier;
+        totalWinAmount += amount * multiplier;
+  
+        // Guardar posiciones ganadoras
+        allWinningPositions.push(...combination);
+  
+        // Incrementar contador de símbolos ganadores
+        symbolCounts[winningImage.value] = (symbolCounts[winningImage.value] || 0) + 1;
       }
     }
-
-    setMessage(t('¡No hubo suerte esta vez! 😢'));
-    updateGlobalStats(false);
-  };
+  
+    // Verificar si toda la cuadrícula tiene el mismo símbolo
+    const allSameSymbol = grid.every(row => row.every(cell => cell.value === grid[0][0].value));
+    if (allSameSymbol) {
+      const globalMultiplier = totalMultiplier * 8; // Considera todas las combinaciones posibles
+      totalWinAmount = amount * globalMultiplier;
+      totalMultiplier = globalMultiplier;
+    }
+  
+    if (totalWinAmount > 0) {
+      const newBalance = balance + totalWinAmount;
+      setMessage(
+        t('SLOTS.¡Ganaste', {
+          totalWinAmount,
+          totalMultiplier,
+        })
+      );
+      updateBalanceDisplay(newBalance);
+      setWinningPositions(allWinningPositions); // Guardar todas las posiciones ganadoras
+      updateGlobalStats(true);
+      triggerConfetti();
+    } else {
+      setMessage(t('SLOTS.¡No hubo suerte esta vez!'));
+      setWinningPositions([]); // Reinicia si no hay ganancia
+      updateGlobalStats(false);
+    }          
+  }
 
   return (
-    <div className={styles.slotMachineContainer}>
-      <div className={styles.reels}>
-        {grid.map((row, rowIndex) => (
-          <div key={rowIndex} className={styles.row}>
-            {row.map((cell, colIndex) => (
-              <Reel key={colIndex} image={cell} spinning={spinning} />
+    <div className={styles.slotMachineWrapper}>
+      <h1 className={styles.mainTitle}>{t('SLOTS.Tragaperras')}</h1>
+      <div className={styles.slotMachineContainer}>
+        <div className={styles.reels}>
+          {grid.map((row, rowIndex) => (
+            <div key={rowIndex} className={styles.row}>
+              {row.map((cell, colIndex) => (
+                <Reel
+                  key={colIndex}
+                  image={cell}
+                  spinning={spinning}
+                  isWinning={winningPositions.some(
+                    ([r, c]) => r === rowIndex && c === colIndex
+                  )}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+  
+        <div className={styles.controls}>
+          <input
+            type="number"
+            value={amount}
+            onChange={handleAmountChange}
+            min="0.10"
+            step="0.10"
+            className={styles.input}
+            disabled={spinning}
+            placeholder={t('SLOTS.Ingrese su apuesta')}
+          />
+          <button
+            onClick={spinReels}
+            className={styles.button}
+            disabled={spinning || amount <= 0}
+          >
+            {spinning ? t('SLOTS.Girando...') : t('SLOTS.Apostar')}
+          </button>
+        </div>
+  
+        <p className={styles.message}>{message}</p>
+        <div className={styles.multipliersMenu}>
+          <h3>{t('SLOTS.Multiplicadores de las imágenes')}</h3>
+          <div className={styles.imagesList}>
+            {images.map((image, index) => (
+              <div key={index} className={styles.imageItem}>
+                <img
+                  src={image.src}
+                  alt={`Ícono ${image.value}`}
+                  className={styles.icon}
+                />
+                <p>{t('SLOTS.Multiplicador').replace('x', `x${image.multiplier}`)}</p>
+              </div>
             ))}
           </div>
-        ))}
+        </div>
       </div>
-
-      <div className={styles.controls}>
-        <input
-          type="number"
-          value={amount}
-          onChange={handleAmountChange}
-          min="0.10"
-          step="0.10"
-          className={styles.input}
-          disabled={spinning}
-          placeholder={t('Ingrese su apuesta')}
-        />
-        <button
-          onClick={spinReels}
-          className={styles.button}
-          disabled={spinning || amount <= 0}
-        >
-          {spinning ? t('Girando...') : t('Apostar')}
-        </button>
-      </div>
-
-      <p className={styles.message}>{message}</p>
     </div>
   );
+  
 };
 
 export default SlotMachine;
