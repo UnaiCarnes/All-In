@@ -20,6 +20,7 @@ import PrivateRoute from './components/PrivateRoute';
 import { UserProvider } from './context/UserContext';  // Importa el UserProvider
 import Blackjack from './pages/Blackjack/Blackjack';
 import Slot from './pages/Slot/Slot';
+import Organ from './pages/Organs';
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/races" element={<Layout><Races /></Layout>} />
             <Route path="/blackjack" element={<Layout><Blackjack /></Layout>} />
             <Route path="/slot" element={<Layout><Slot /></Layout>} />
+            <Route path="/organs" element={<Layout><Organ /></Layout>} />
           </Routes>
         </Router>
       </UserProvider>

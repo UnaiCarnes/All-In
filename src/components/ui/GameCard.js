@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const GameCard = ({ title, image, route }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    console.log("Navegando a:", route); // Debug
+    navigate(route);
+  };
+
   return (
-    <Link to={route} className="game-box">
+    <div className="game-box cursor-pointer" onClick={handleClick}>
       <div className="relative group overflow-hidden rounded-lg">
         <img
           src={image}
@@ -16,13 +23,8 @@ const GameCard = ({ title, image, route }) => {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
-};
-
-GameCard.defaultProps = {
-  image: '/img/header3.png',
-  route: '/blackjack', // Valor por defecto en caso de que no se pase uno
 };
 
 export default GameCard;

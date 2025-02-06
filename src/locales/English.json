@@ -53,7 +53,7 @@
       "Mayor Premio":"Biggest Prize",
       "Mayor Apuesta":"Biggest Bet",
       "Racha más Alta":"Higgest Streak",
-      "Consumibles":"Consumables",
+      "Consumibles - Próximamente":"Consumables - Comming Soon",
       "Bebidas Alcohólicas":"Alcoholic Drinks",
       "Bebidas Hidratantes":"Hydration Drinks",
       "Sustancias Tóxicas":"Toxic Substances",
@@ -135,6 +135,9 @@
       "Ingrese su apuesta": "Enter your bet",
       "Apostar": "Bet",
       "Girando...": "Spinning..."
-    }
+    },
+    "ORGANS": {
+    "Próximamente":"Coming Soon"
+   }
   }
   
