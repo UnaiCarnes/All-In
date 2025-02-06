@@ -52,7 +52,7 @@
       "Mayor Premio":"Saria Haundiena",
       "Mayor Apuesta":"Apostu Haundiena",
       "Racha más Alta":"Boladarik Haundiena",
-      "Consumibles":"Kontsumigarriak",
+      "Consumibles - Próximamente":"Kontsumigarriak - Laster",
       "Bebidas Alcohólicas":"Edari alkoholdunak",
       "Bebidas Hidratantes":"Edari hidratatzaileak",
       "Sustancias Tóxicas":"Substantziak Toxikoak",
@@ -135,6 +135,9 @@
       "Ingrese su apuesta": "Sartu zure apustua",
       "Apostar": "Apustu egin",
       "Girando...": "Biraka..."
-    }
+   },
+   "ORGANS": {
+    "Próximamente":"Laster"
+   }
   }
   

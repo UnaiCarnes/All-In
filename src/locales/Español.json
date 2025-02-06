@@ -52,7 +52,7 @@
       "Mayor Premio":"Mayor Premio",
       "Mayor Apuesta":"Mayor Apuesta",
       "Racha más Alta":"Racha más Alta",
-      "Consumibles":"Consumibles",
+      "Consumibles - Próximamente":"Consumibles - Próximamente",
       "Bebidas Alcohólicas":"Bebidas Alcohólicas",
       "Bebidas Hidratantes":"Bebidas Hidratantes",
       "Sustancias Tóxicas":"Sustancias Tóxicas",
@@ -134,6 +134,9 @@
       "Ingrese su apuesta": "Ingrese su apuesta",
       "Apostar": "Apostar",
       "Girando...": "Girando..."
-    }
+    },
+    "ORGANS": {
+    "Próximamente":"Próximamente"
+   }
   }
   

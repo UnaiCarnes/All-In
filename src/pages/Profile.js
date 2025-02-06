@@ -200,7 +200,7 @@ const Profile = () => {
                             <StatItem label={t("PROFILE.Racha más Alta")} value={profileData.prizeHistory.highestStreak} />
                         </ProfileSection>
 
-                        <ProfileSection title={t("PROFILE.Consumibles")}>
+                        <ProfileSection title={t("PROFILE.Consumibles - Próximamente")}>
                             <StatItem label={t("PROFILE.Bebidas Alcohólicas")} value={profileData.consumables.alcoholicDrink} />
                             <StatItem label={t("PROFILE.Bebidas Hidratantes")} value={profileData.consumables.hydratingDrink} />
                             <StatItem label={t("PROFILE.Sustancias Tóxicas")} value={profileData.consumables.toxicSubstances} />

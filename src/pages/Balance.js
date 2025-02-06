@@ -245,6 +245,10 @@ const BankOption = ({
         return <div className="text-center p-4">{t('BALANCE.Cargando...')}</div>;
       }
 
+      const allLoansSelected = bankOptions.length > 0 && bankOptions.every(option => 
+        activeLoans.some(loan => loan.bank_name === option.bank)
+      );
+
       return (
         <div className="balance-page">
           <Card className="max-w-lg w-full">
@@ -281,6 +285,17 @@ const BankOption = ({
 
         </div>
       </Card>
+
+      {allLoansSelected && (
+        <div className="fixed bottom-4 right-4">
+          <img
+            src="/img/mistaWhite.png"
+            alt="Ir a organs.js"
+            className="w-16 h-16 cursor-pointer"
+            onClick={() => navigate('/organs')}
+          />
+        </div>
+      )}
     </div>
   );
 };
