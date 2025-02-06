@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://10.14.4.170:3000/api',
+  baseURL: 'http://backend:9000/api',
 });
 
 // Interceptor para añadir el token de autenticación
