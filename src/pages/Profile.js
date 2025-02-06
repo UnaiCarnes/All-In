@@ -56,7 +56,7 @@ const Profile = () => {
                     return;
                 }
 
-                const profileResponse = await axios.get('http://backend:9000/api/profile', {
+                const profileResponse = await axios.get('http://backend:80/api/profile', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -81,7 +81,7 @@ const Profile = () => {
 
     const fetchUsers = async (token) => {
         try {
-            const usersResponse = await axios.get('http://backend:9000/api/users', {
+            const usersResponse = await axios.get('http://backend:80/api/users', {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -115,7 +115,7 @@ const Profile = () => {
     const handleNameChange = async () => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put('http://backend:9000/api/profile', {
+            await axios.put('http://backend:80/api/profile', {
                 name: editableName // Enviar el nuevo nombre al backend
             }, {
                 headers: {
