@@ -43,9 +43,8 @@ class Roulette extends React.Component {
 
   render() {
     return (
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto p-40">
         <div className="flex justify-center pt-2">
-          <img src="/img/roulette/shic_logo2.png" alt="Logo" className="w-auto h-16" />
         </div>
         <div className="flex flex-col md:flex-row justify-around">
           <div className="mx-5">
